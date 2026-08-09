@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Standard SEO -->
+  <title>VELLUME STUDIO // High-Motion Digital Infrastructure</title>
+  <meta name="description" content="High-end web development, branding, UX/UI design, and 3D / motion for luxury trades and aesthetics clinics in Adelaide." />
+  <meta name="keywords" content="web development, branding, UX/UI design, 3D motion, Adelaide, digital agency, high-end web design, digital infrastructure" />
+  <meta name="author" content="Vellume Studio" />
+  <link rel="canonical" href="https://vellumestudio.com.au/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vellumestudio.com.au/" />
+  <meta property="og:title" content="VELLUME STUDIO // High-Motion Digital Infrastructure" />
+  <meta property="og:description" content="High-end web development, branding, UX/UI design, and 3D / motion for luxury trades and aesthetics clinics in Adelaide." />
+  <meta property="og:image" content="https://vellumestudio.com.au/images/hero-new.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://vellumestudio.com.au/" />
+  <meta name="twitter:title" content="VELLUME STUDIO // High-Motion Digital Infrastructure" />
+  <meta name="twitter:description" content="High-end web development, branding, UX/UI design, and 3D / motion for luxury trades and aesthetics clinics in Adelaide." />
+  <meta name="twitter:image" content="https://vellumestudio.com.au/images/hero-new.jpg" />
+  
+  <!-- Theme & Favicon -->
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Locomotive Scroll CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Locomotive Scroll JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+</head>
+<body class="bg-[#F5F5F3] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F5F5F3] antialiased">
+
+  <!-- Custom Cursor Dot -->
+  <div id="custom-cursor"></div>
+
+
+
+  <!-- FIXED BLENDED NAVIGATION BAR -->
+  <header class="nav-blended">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="font-heading font-extrabold text-xl md:text-2xl tracking-tighter cursor-hover">
+        VELLUME STUDIO
+      </a>
+
+      <!-- Location & Action -->
+      <div class="flex items-center gap-6 font-mono-tech text-xs tracking-wider">
+        <a href="mailto:hello@vellumestudio.com.au" class="hidden md:inline font-bold cursor-hover">
+          hello@vellumestudio.com.au
+        </a>
+        <a href="booking.html" id="btn-apply-header" class="inline-block btn-nav btn-brutal cursor-hover text-xs py-2 px-5">
+          INQUIRE
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- LOCOMOTIVE SCROLL CONTAINER -->
+  <div data-scroll-container class="w-full">
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10">
+
+      <!-- 2. HERO SECTION (FULL HEIGHT TOP COVERAGE) -->
+      <section id="hero-section" data-scroll-section class="relative border-b border-[#0A0A0A] pt-36 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 max-w-[1600px] mx-auto min-h-screen flex flex-col justify-between overflow-hidden bg-black text-[#F5F5F3]">
+        
+        <!-- Hero Background (Static Image) -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <img src="./images/hero-new.jpg" alt="Hero Background" class="w-full h-full object-cover object-center brightness-110 contrast-105">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/50"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70"></div>
+          <!-- Vignette Effect -->
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)]"></div>
+        </div>
+
+        <div class="relative z-10 my-auto w-full max-w-full">
+          <!-- Split Text Animated Hero Title (Sleeker Fit) -->
+          <h1 id="hero-title" class="font-heading font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-tighter uppercase mb-6 text-[#F5F5F3] max-w-full drop-shadow-lg">
+            <span class="block">TRANSFORM</span>
+            <span class="block whitespace-nowrap">YOUR VISION</span>
+          </h1>
+
+          <!-- Subheadline & Action -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 border-t border-[#F5F5F3]/30">
+            <div class="lg:col-span-8">
+              <p id="hero-subheadline" class="font-body font-medium text-lg sm:text-xl md:text-2xl text-[#E5E5E5] leading-snug max-w-3xl drop-shadow-md">
+                High-end web development, branding, UX/UI design, and 3D / motion.
+              </p>
+            </div>
+            
+            <div class="lg:col-span-4 flex justify-start lg:justify-end">
+              <a href="booking.html" class="btn-brutal btn-brutal-light cursor-hover w-full sm:w-auto text-xs md:text-sm py-3.5 px-8 text-center shadow-lg">
+                INQUIRE NOW &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 3. INFINITE TYPOGRAPHY MARQUEE -->
+      <section data-scroll-section class="marquee-container py-4 font-mono-tech text-sm sm:text-base font-bold uppercase tracking-widest text-[#0A0A0A]">
+        <div class="marquee-content flex items-center gap-12">
+          <span>VELLUME STUDIO // 60FPS ENGINEERING</span>
+          <span class="text-[#666666]">//</span>
+          <span>ARCHITECTURAL GRIDS</span>
+          <span class="text-[#666666]">//</span>
+          <span>UX/UI DESIGN & BRANDING</span>
+          <span class="text-[#666666]">//</span>
+          <span>3D / MOTION</span>
+          <span class="text-[#666666]">//</span>
+          <span>VELLUME STUDIO // 60FPS ENGINEERING</span>
+          <span class="text-[#666666]">//</span>
+          <span>ARCHITECTURAL GRIDS</span>
+          <span class="text-[#666666]">//</span>
+          <span>UX/UI DESIGN & BRANDING</span>
+          <span class="text-[#666666]">//</span>
+          <span>3D / MOTION</span>
+          <span class="text-[#666666]">//</span>
+        </div>
+      </section>
+
+      <!-- 4. PROOF OF WORK // 3D COVERFLOW SECTION -->
+      <section data-scroll-section class="w-full min-h-screen py-24 border-t border-[#0A0A0A] overflow-hidden bg-[#F5F5F3] flex flex-col justify-between">
+        <div class="px-6 md:px-16 mb-8 flex justify-between items-end">
+          <div>
+            <p class="font-mono-tech text-xs uppercase tracking-widest text-[#666666] mb-2">// PROOF OF WORK</p>
+            <h2 class="text-4xl md:text-6xl font-heading font-black text-[#0A0A0A] tracking-tighter uppercase">SELECTED BUILDS</h2>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 font-mono-tech text-xs text-[#666666]">
+            <span>[ CLICK CARD TO FOCUS ]</span>
+          </div>
+        </div>
+
+        <!-- 3D Carousel Stage -->
+        <div id="carousel-stage" class="relative w-full flex-grow flex items-center justify-center outline-none cursor-pointer" style="perspective: 1600px; min-height: 480px;">
+          <!-- Cards injected via JS -->
+        </div>
+      </section>
+
+      <!-- 5. CAPABILITIES: HOBRO-STYLE HOVER REVEAL LIST -->
+      <section id="services" data-scroll-section class="w-full pt-10 pb-16 bg-[#F5F5F3] border-t border-[#0A0A0A]">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-4 flex justify-between items-end">
+          <div>
+            <p class="font-mono-tech text-[11px] uppercase tracking-widest text-[#666666] mb-1">// CAPABILITIES</p>
+            <h2 class="text-2xl md:text-4xl font-heading font-black text-[#0A0A0A] tracking-tighter uppercase">SERVICES</h2>
+          </div>
+        </div>
+
+        <ul class="w-full max-w-7xl mx-auto border-b border-[#0A0A0A]">
+          
+          <!-- Row 1: Branding -->
+          <li class="service-row group relative border-t border-[#0A0A0A] flex justify-center items-center py-4 md:py-5 px-6 sm:px-12 cursor-pointer transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-[#F5F5F3] text-[#0A0A0A]"
+              data-words-left='["IDENTITY", "SYSTEMS", "TYPOGRAPHY", "STRATEGY", "LOGOMARKS"]'
+              data-words-right='["VISUAL MARKS", "BRAND GUIDES", "ART DIRECTION", "COLOUR THEORY", "ASSET PACKS"]'>
+            <span class="absolute left-6 md:left-12 font-mono-tech text-xs md:text-sm tracking-widest z-10">(01)</span>
+            
+            <div class="service-title-container flex items-center justify-center gap-3 sm:gap-6 md:gap-8 relative w-full max-w-4xl mx-auto">
+              <div class="service-ticker left-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-right w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-end">
+                <span class="ticker-word inline-block">IDENTITY</span>
+              </div>
+              
+              <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-medium tracking-tighter uppercase text-center shrink-0">Branding</h3>
+
+              <div class="service-ticker right-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-left w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-start">
+                <span class="ticker-word inline-block">VISUAL MARKS</span>
+              </div>
+            </div>
+
+            <!-- Floating Media Container (Flat Backdrop & Shadow) -->
+            <div class="hover-reveal fixed top-0 left-0 w-[240px] sm:w-[300px] md:w-[350px] aspect-video pointer-events-none opacity-0 scale-95 z-50 overflow-hidden border border-white/20 shadow-2xl">
+              <video autoplay muted loop playsinline poster="./videos/branding-poster.png" class="hover-reveal-media w-full h-full object-cover" src="./videos/branding-new.mp4">
+                <img src="./videos/branding-poster.png" alt="Branding" class="hover-reveal-media w-full h-full object-cover" />
+              </video>
+            </div>
+          </li>
+
+          <!-- Row 2: UX/UI Design -->
+          <li class="service-row group relative border-t border-[#0A0A0A] flex justify-center items-center py-4 md:py-5 px-6 sm:px-12 cursor-pointer transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-[#F5F5F3] text-[#0A0A0A]"
+              data-words-left='["WIREFRAMES", "PROTOTYPES", "USER FLOWS", "ACCESSIBILITY", "USER LABS"]'
+              data-words-right='["INTERACTION", "MICRO-ANIMS", "GRID SYSTEMS", "DESIGN OPS", "FRACTALS"]'>
+            <span class="absolute left-6 md:left-12 font-mono-tech text-xs md:text-sm tracking-widest z-10">(02)</span>
+            
+            <div class="service-title-container flex items-center justify-center gap-3 sm:gap-6 md:gap-8 relative w-full max-w-4xl mx-auto">
+              <div class="service-ticker left-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-right w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-end">
+                <span class="ticker-word inline-block">WIREFRAMES</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-medium tracking-tighter uppercase text-center shrink-0">UX/UI Design</h3>
+
+              <div class="service-ticker right-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-left w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-start">
+                <span class="ticker-word inline-block">INTERACTION</span>
+              </div>
+            </div>
+            
+            <div class="hover-reveal fixed top-0 left-0 w-[240px] sm:w-[300px] md:w-[350px] aspect-video pointer-events-none opacity-0 scale-95 z-50 overflow-hidden border border-white/20 shadow-2xl">
+              <video src="./videos/uiux-video.mp4" autoplay loop muted playsinline class="hover-reveal-media w-full h-full object-cover"></video>
+            </div>
+          </li>
+
+          <!-- Row 3: Web & Development -->
+          <li class="service-row group relative border-t border-[#0A0A0A] flex justify-center items-center py-4 md:py-5 px-6 sm:px-12 cursor-pointer transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-[#F5F5F3] text-[#0A0A0A]"
+              data-words-left='["60FPS MOTION", "FRONTEND DEV", "HEADLESS CMS", "SPEED OPTIM", "NEO ARCH"]'
+              data-words-right='["FULL STACK", "WEBGL / GSAP", "SEO STRUCTURE", "API PIPELINES", "LIGHTNING"]'>
+            <span class="absolute left-6 md:left-12 font-mono-tech text-xs md:text-sm tracking-widest z-10">(03)</span>
+            
+            <div class="service-title-container flex items-center justify-center gap-3 sm:gap-6 md:gap-8 relative w-full max-w-4xl mx-auto">
+              <div class="service-ticker left-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-right w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-end">
+                <span class="ticker-word inline-block">60FPS MOTION</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-medium tracking-tighter uppercase text-center shrink-0">Web & Development</h3>
+
+              <div class="service-ticker right-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-left w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-start">
+                <span class="ticker-word inline-block">FULL STACK</span>
+              </div>
+            </div>
+            
+            <div class="hover-reveal fixed top-0 left-0 w-[240px] sm:w-[300px] md:w-[350px] aspect-video pointer-events-none opacity-0 scale-95 z-50 overflow-hidden border border-white/20 shadow-2xl">
+              <video id="webdev-video" autoplay muted loop playsinline class="hover-reveal-media w-full h-full object-cover" src="./videos/webdev-new.mp4"></video>
+            </div>
+          </li>
+
+          <!-- Row 4: 3D / Motion -->
+          <li class="service-row group relative border-t border-[#0A0A0A] flex justify-center items-center py-4 md:py-5 px-6 sm:px-12 cursor-pointer transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-[#F5F5F3] text-[#0A0A0A]"
+              data-words-left='["3D MODELLING", "MOTION GRAPHICS", "SHADERS", "TEXTURE RENDERS", "RIGGING"]'
+              data-words-right='["CINE RENDERS", "LIGHTING FX", "PHYSICS SIM", "KEYFRAME ANIMS", "COMPOSITING"]'>
+            <span class="absolute left-6 md:left-12 font-mono-tech text-xs md:text-sm tracking-widest z-10">(04)</span>
+            
+            <div class="service-title-container flex items-center justify-center gap-3 sm:gap-6 md:gap-8 relative w-full max-w-4xl mx-auto">
+              <div class="service-ticker left-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-right w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-end">
+                <span class="ticker-word inline-block">3D MODELLING</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-medium tracking-tighter uppercase text-center shrink-0">3D / Motion</h3>
+
+              <div class="service-ticker right-ticker hidden md:flex opacity-0 pointer-events-none font-mono-tech text-[11px] sm:text-xs text-[#888888] tracking-widest uppercase text-left w-36 sm:w-44 overflow-hidden h-[1.5em] items-center justify-start">
+                <span class="ticker-word inline-block">CINE RENDERS</span>
+              </div>
+            </div>
+            
+            <div class="hover-reveal fixed top-0 left-0 w-[240px] sm:w-[300px] md:w-[350px] aspect-video pointer-events-none opacity-0 scale-95 z-50 overflow-hidden border border-white/20 shadow-2xl">
+              <video autoplay muted loop playsinline class="hover-reveal-media w-full h-full object-cover" src="./videos/3d-motion-new.mp4"></video>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+
+
+      <!-- 6. THE "SOCIAL PROOF" INITIATIVE & BOOKING SECTION -->
+      <section data-scroll-section class="bg-[#0A0A0A] text-[#F5F5F3] py-24 md:py-36 px-6 md:px-12">
+        <div class="max-w-[1600px] mx-auto">
+          
+          <div class="pb-8 mb-12 border-b border-[#222222] flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <div class="font-mono-tech text-xs text-[#888888] uppercase tracking-widest mb-2">// SPECIAL INITIATIVE</div>
+              <h2 class="font-heading font-black text-4xl sm:text-6xl md:text-8xl tracking-tighter uppercase text-white leading-none">
+                THE TIER-1 SPRINT
+              </h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-6 space-y-8 flex flex-col justify-between">
+              <div>
+                <p class="font-body text-xl sm:text-2xl text-[#CCCCCC] leading-relaxed mb-6">
+                  Currently partnering with a select few local North Star brands. We are offering complete, zero-cost digital builds strictly in exchange for Tier-1 video testimonials.
+                </p>
+
+                <div class="font-mono-tech text-xs text-[#888888] space-y-2 border-t border-[#222222] pt-6">
+                  <div>[ QUALIFICATION: ESTABLISHED PRACTICE OR TRADE FIRM ]</div>
+                  <div>[ DIRECT CONTACT: hello@vellumestudio.com.au ]</div>
+                </div>
+              </div>
+
+              <!-- Magnetic Hover CTA Button -->
+              <div>
+                <a href="booking.html" class="inline-block magnetic-btn btn-brutal btn-brutal-light cursor-hover text-sm py-4 px-10">
+                  INQUIRE ABOUT PARTNERSHIP &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Direct Email / Booking Box -->
+            <div class="lg:col-span-6 border border-[#222222] bg-[#111111] p-8 md:p-10 space-y-6">
+              <div class="font-mono-tech text-xs text-[#888888] uppercase tracking-widest">
+                DIRECT EMAIL CONTACT
+              </div>
+
+              <a href="mailto:hello@vellumestudio.com.au" class="font-mono-tech font-bold text-xl sm:text-3xl text-white hover:underline block break-all cursor-hover">
+                hello@vellumestudio.com.au
+              </a>
+
+              <div class="flex items-center gap-4 pt-2">
+                <button id="btn-copy-email" class="btn-brutal btn-brutal-light cursor-hover text-xs py-2.5 px-5">
+                  COPY EMAIL ADDRESS
+                </button>
+                <span id="copy-status" class="hidden font-mono-tech text-xs text-emerald-400 font-bold">
+                  COPIED TO CLIPBOARD
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. DYNAMIC HOVER CTA -->
+      <section data-scroll-section onclick="window.location.href='booking.html'" class="w-full py-32 bg-[#F5F5F3] border-t border-[#0A0A0A] flex flex-col items-center justify-center text-center cursor-pointer" id="dynamic-cta-section">
+        <h3 class="font-body font-medium text-2xl md:text-3xl text-[#0A0A0A] tracking-tight mb-8">Got Project?</h3>
+        
+        <div class="group flex items-center justify-center font-body text-4xl md:text-6xl lg:text-[8rem] tracking-tighter text-[#0A0A0A] uppercase">
+          
+          <!-- Left Brackets -->
+          <div class="relative flex items-center justify-end w-[30px] md:w-[60px] font-light">
+            <span class="bracket-l b4 absolute right-0 opacity-0 transition-all duration-700 ease-out transform translate-x-6 text-[#E0E0DC] group-hover:opacity-100 group-hover:-translate-x-12 md:group-hover:-translate-x-24 group-hover:scale-y-125">(</span>
+            <span class="bracket-l b3 absolute right-0 opacity-0 transition-all duration-500 ease-out transform translate-x-4 text-[#CCCCCC] group-hover:opacity-100 group-hover:-translate-x-8 md:group-hover:-translate-x-16 group-hover:scale-y-115">(</span>
+            <span class="bracket-l b2 absolute right-0 opacity-0 transition-all duration-300 ease-out transform translate-x-2 text-[#999999] group-hover:opacity-100 group-hover:-translate-x-4 md:group-hover:-translate-x-8 group-hover:scale-y-105">(</span>
+            <span class="bracket-l b1 relative z-10 transition-transform duration-500 ease-out group-hover:scale-y-95 font-normal text-[#0A0A0A]">(</span>
+          </div>
+
+          <!-- Animated Words Wrapper -->
+          <div class="relative h-[1.2em] w-[200px] sm:w-[280px] md:w-[380px] lg:w-[580px] flex items-center justify-center mx-2 md:mx-6">
+            <div id="cta-word-slider" class="w-full h-full text-center flex items-center justify-center overflow-hidden font-normal">
+              <!-- JS will inject letters here -->
+            </div>
+          </div>
+
+          <!-- Right Brackets -->
+          <div class="relative flex items-center justify-start w-[30px] md:w-[60px] font-light">
+            <span class="bracket-r b1 relative z-10 transition-transform duration-500 ease-out group-hover:scale-y-95 font-normal text-[#0A0A0A]">)</span>
+            <span class="bracket-r b2 absolute left-0 opacity-0 transition-all duration-300 ease-out transform -translate-x-2 text-[#999999] group-hover:opacity-100 group-hover:translate-x-4 md:group-hover:translate-x-8 group-hover:scale-y-105">)</span>
+            <span class="bracket-r b3 absolute left-0 opacity-0 transition-all duration-500 ease-out transform -translate-x-4 text-[#CCCCCC] group-hover:opacity-100 group-hover:translate-x-8 md:group-hover:translate-x-16 group-hover:scale-y-115">)</span>
+            <span class="bracket-r b4 absolute left-0 opacity-0 transition-all duration-700 ease-out transform -translate-x-6 text-[#E0E0DC] group-hover:opacity-100 group-hover:translate-x-12 md:group-hover:translate-x-24 group-hover:scale-y-125">)</span>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer data-scroll-section class="border-t border-[#0A0A0A] bg-[#F5F5F3] py-6 px-6 md:px-12 relative z-10 font-mono-tech text-xs text-[#666666]">
+      <div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <p class="font-bold text-[#0A0A0A]">
+            © 2026 VELLUME STUDIO // ADELAIDE
+          </p>
+          <span class="hidden sm:inline">//</span>
+          <p>ELEVATING DIGITAL INFRASTRUCTURE</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="terms.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">TERMS & CONDITIONS</a>
+          <a href="privacy.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">PRIVACY POLICY</a>
+          <a href="mailto:hello@vellumestudio.com.au" class="hover:text-[#0A0A0A] transition-colors cursor-hover">EMAIL</a>
+          <a href="https://www.instagram.com/vellumestudios/" target="_blank" class="hover:text-[#0A0A0A] transition-colors cursor-hover flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            INSTAGRAM
+          </a>
+        </div>
+        <button id="btn-back-to-top" class="hover:text-[#0A0A0A] cursor-hover bg-transparent border-none p-0 font-mono-tech text-xs text-[#666666]">BACK TO TOP &uarr;</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="main.js"></script>
+</body>
+</html>

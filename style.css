@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
+
+:root {
+  --bg-alabaster: #F5F5F3;
+  --bg-dark: #0A0A0A;
+  --text-main: #0A0A0A;
+  --text-muted: #666666;
+  --border-light: #E0E0DC;
+  --border-dark: #222222;
+  --font-syne: 'Syne', sans-serif;
+  --font-space: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base resets & theme setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important; /* Strict neo-brutalist zero-radius */
+}
+
+html, body {
+  background-color: var(--bg-alabaster);
+  color: var(--text-main);
+  font-family: var(--font-space);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--bg-dark);
+  color: var(--bg-alabaster);
+}
+
+/* Custom Cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: var(--bg-dark);
+  border-radius: 50% !important;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+  mix-blend-mode: difference;
+}
+
+#custom-cursor.active {
+  width: 54px;
+  height: 54px;
+  background-color: #FFFFFF;
+}
+
+#custom-cursor.hidden-cursor {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide cursor when hovering over Services section */
+#services, #services * {
+  cursor: none !important;
+}
+
+/* Hover Reveal Cards (Flat Elevated Backdrop & Shadow) */
+.hover-reveal {
+  box-shadow: 
+    0 24px 48px -12px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+  background-color: #0A0A0A;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hover-reveal .hover-reveal-media {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-reveal:hover .hover-reveal-media {
+  transform: scale(1.03);
+}
+
+/* Service Title Word Ticker Animation */
+.service-ticker {
+  transition: opacity 0.35s ease, color 0.35s ease;
+  user-select: none;
+}
+
+.service-row:hover .service-ticker {
+  opacity: 1 !important;
+  color: #CCCCCC !important;
+}
+
+.service-row:hover .service-ticker .ticker-word {
+  color: #E5E5E5 !important;
+}
+
+.ticker-word {
+  will-change: transform, opacity;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Typography styles */
+.font-heading {
+  font-family: var(--font-syne);
+}
+
+.font-body {
+  font-family: var(--font-space);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+/* Fixed Header: Transparent at top, Solid Dark Block on Scroll */
+.nav-blended {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  color: #F5F5F3;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.nav-blended a, .nav-blended button, .nav-blended span {
+  color: #F5F5F3;
+  transition: color 0.3s ease;
+}
+
+.nav-blended .btn-nav {
+  border: 1px solid #F5F5F3;
+  background: transparent;
+  color: #F5F5F3;
+}
+
+.nav-blended .btn-nav:hover {
+  background: #F5F5F3;
+  color: #0A0A0A !important;
+}
+
+/* Scrolled State: Solid Dark Block */
+.nav-blended.is-scrolled {
+  background-color: rgba(10, 10, 10, 0.96);
+  border-bottom: 1px solid #222222;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Rotating Wireframe SVG */
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 40s linear infinite;
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--bg-dark);
+  border-bottom: 1px solid var(--bg-dark);
+  background-color: var(--bg-alabaster);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* Interactive Subsystems Hover-Heavy List */
+.subsystem-row {
+  position: relative;
+  border-bottom: 1px solid var(--bg-dark);
+  padding: 2.5rem 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.subsystem-row:hover {
+  background-color: var(--bg-dark);
+  color: var(--bg-alabaster);
+}
+
+.subsystem-row:hover .subsystem-title {
+  color: var(--bg-alabaster);
+  transform: translateX(12px);
+}
+
+.subsystem-row:hover .subsystem-num {
+  color: var(--bg-alabaster);
+}
+
+.subsystem-title {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.subsystem-num {
+  transition: color 0.3s ease;
+}
+
+/* Neo-Brutalist Buttons */
+.btn-brutal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--bg-dark);
+  color: var(--bg-alabaster);
+  border: 1px solid var(--bg-dark);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-brutal:hover {
+  background-color: var(--bg-alabaster);
+  color: var(--bg-dark);
+}
+
+.btn-brutal-light {
+  background-color: var(--bg-alabaster);
+  color: var(--bg-dark);
+  border: 1px solid var(--bg-alabaster);
+}
+
+.btn-brutal-light:hover {
+  background-color: var(--bg-dark);
+  color: var(--bg-alabaster);
+}
+
+/* Modal Drawer Overlay */
+.modal-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-panel {
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-panel {
+  transform: translateY(0);
+}

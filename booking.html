@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#F5F5F3]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Standard SEO -->
+  <title>VELLUME STUDIO // Book a Sprint</title>
+  <meta name="description" content="Book your Tier-1 Sprint or inquire about our digital infrastructure services." />
+  <meta name="keywords" content="web development, branding, booking, inquiry, digital agency" />
+  <meta name="author" content="Vellume Studio" />
+  <link rel="canonical" href="https://vellumestudio.com.au/booking" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vellumestudio.com.au/booking" />
+  <meta property="og:title" content="VELLUME STUDIO // Book a Sprint" />
+  <meta property="og:description" content="Book your Tier-1 Sprint or inquire about our digital infrastructure services." />
+  <meta property="og:image" content="https://vellumestudio.com.au/images/hero-new.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://vellumestudio.com.au/booking" />
+  <meta name="twitter:title" content="VELLUME STUDIO // Book a Sprint" />
+  <meta name="twitter:description" content="Book your Tier-1 Sprint or inquire about our digital infrastructure services." />
+  <meta name="twitter:image" content="https://vellumestudio.com.au/images/hero-new.jpg" />
+  
+  <!-- Theme & Favicon -->
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- GSAP & Locomotive Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+</head>
+<body class="text-[#0A0A0A] overflow-x-hidden selection:bg-[#0A0A0A] selection:text-[#F5F5F3]">
+  
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" class="hidden md:block"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="nav-blended flex items-center justify-between px-6 md:px-12 py-4 mix-blend-difference z-50">
+    <a href="index.html" class="font-heading font-black text-2xl tracking-tighter uppercase cursor-hover">
+      VELLUME
+    </a>
+    <a href="index.html" class="btn-nav cursor-hover px-5 py-2 font-mono-tech text-xs tracking-widest uppercase">
+      BACK HOME
+    </a>
+  </nav>
+
+  <!-- Main Scroll Container -->
+  <div data-scroll-container id="scroll-container">
+    <main data-scroll-section class="w-full min-h-screen pt-32 pb-24 md:pt-48 md:pb-36 px-6 md:px-12 flex flex-col items-center justify-center">
+      
+      <div class="w-full max-w-4xl bg-white border-2 border-[#0A0A0A] shadow-[8px_8px_0px_#0A0A0A] p-8 md:p-16">
+        <h1 class="font-heading font-black text-4xl md:text-6xl tracking-tighter uppercase mb-2">LET'S BUILD IT</h1>
+        <p class="font-mono-tech text-xs text-[#666666] tracking-widest uppercase mb-12">// PROJECT INQUIRY FORM</p>
+
+        <form id="booking-form" action="https://formsubmit.co/hello@vellumestudio.com.au" method="POST" enctype="multipart/form-data" class="space-y-8 font-body font-medium text-sm md:text-base">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="New Project Inquiry - Vellume Studio">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <!-- Name -->
+          <div class="flex flex-col space-y-2">
+            <label for="name" class="uppercase tracking-wide text-[#666666] text-xs">My name is *</label>
+            <input type="text" id="name" name="name" required class="cursor-hover w-full bg-transparent border-b-2 border-[#0A0A0A] py-3 px-2 focus:outline-none focus:border-[#0A0A0A] focus:bg-[#F5F5F3] transition-colors" placeholder="John Doe">
+          </div>
+
+          <!-- Company -->
+          <div class="flex flex-col space-y-2">
+            <label for="company" class="uppercase tracking-wide text-[#666666] text-xs">My company's name is *</label>
+            <input type="text" id="company" name="company" required class="cursor-hover w-full bg-transparent border-b-2 border-[#0A0A0A] py-3 px-2 focus:outline-none focus:border-[#0A0A0A] focus:bg-[#F5F5F3] transition-colors" placeholder="Acme Corp">
+          </div>
+
+          <!-- Project Description -->
+          <div class="flex flex-col space-y-2">
+            <label for="project" class="uppercase tracking-wide text-[#666666] text-xs">A bit about my project</label>
+            <textarea id="project" name="project" rows="4" class="cursor-hover w-full bg-transparent border-2 border-[#0A0A0A] p-4 focus:outline-none focus:bg-[#F5F5F3] transition-colors resize-y" placeholder="We need a new high-end website..."></textarea>
+          </div>
+
+          <!-- Contact Group -->
+          <div class="border-2 border-[#0A0A0A] p-6 bg-[#F5F5F3] space-y-6">
+            <h3 class="font-mono-tech text-xs tracking-widest uppercase text-[#0A0A0A] mb-4">// CONTACT ME THROUGH</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex flex-col space-y-2">
+                <label for="email" class="uppercase tracking-wide text-[#666666] text-xs">Email *</label>
+                <input type="email" id="email" name="email" required class="cursor-hover w-full bg-transparent border-b-2 border-[#0A0A0A] py-2 px-2 focus:outline-none" placeholder="hello@company.com">
+              </div>
+              <div class="flex flex-col space-y-2">
+                <label for="phone" class="uppercase tracking-wide text-[#666666] text-xs">Phone *</label>
+                <input type="tel" id="phone" name="phone" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" pattern="[0-9]*" class="cursor-hover w-full bg-transparent border-b-2 border-[#0A0A0A] py-2 px-2 focus:outline-none" placeholder="0400000000">
+              </div>
+            </div>
+          </div>
+
+          <!-- File Upload -->
+          <div class="flex flex-col space-y-2 border-2 border-dashed border-[#0A0A0A] p-6 text-center">
+            <label for="brief" class="uppercase tracking-wide text-[#0A0A0A] text-sm cursor-hover cursor-pointer font-bold">Here's my brief (Max 5MB)</label>
+            <input type="file" id="brief" name="brief" accept=".pdf,.doc,.docx,.pages" class="hidden">
+            <p id="file-name-display" class="font-mono-tech text-xs text-[#666666] mt-2">No file selected.</p>
+            <p id="file-error" class="font-mono-tech text-xs text-red-600 hidden font-bold mt-1">File exceeds 5MB limit.</p>
+            <button type="button" id="btn-upload-trigger" class="cursor-hover btn-brutal btn-brutal-light mt-4 text-xs py-2 px-4 self-center mx-auto block">BROWSE FILES</button>
+          </div>
+
+          <!-- Legal / T&C -->
+          <div class="flex items-start space-x-3 pt-4">
+            <div class="flex items-center h-5">
+              <input id="terms" name="terms" type="checkbox" required class="w-4 h-4 text-[#0A0A0A] border-[#0A0A0A] rounded-none focus:ring-[#0A0A0A] cursor-hover">
+            </div>
+            <label for="terms" class="text-xs text-[#666666] uppercase tracking-wide leading-tight cursor-hover">
+              I agree to the <a href="terms.html" class="text-[#0A0A0A] underline hover:text-[#0A0A0A]">Terms and Conditions</a> and <a href="privacy.html" class="text-[#0A0A0A] underline hover:text-[#0A0A0A]">Privacy Policy</a> *
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-6">
+            <button type="submit" class="w-full btn-brutal cursor-hover py-4 text-sm tracking-widest shadow-[4px_4px_0px_#0A0A0A] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#0A0A0A]">
+              SUBMIT INQUIRY
+            </button>
+          </div>
+        </form>
+      </div>
+      
+    </main>
+
+    <!-- FOOTER -->
+    <footer data-scroll-section class="border-t border-[#0A0A0A] bg-[#F5F5F3] py-6 px-6 md:px-12 relative z-10 font-mono-tech text-xs text-[#666666]">
+      <div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <p class="font-bold text-[#0A0A0A]">
+            © 2026 VELLUME STUDIO // ADELAIDE
+          </p>
+          <span class="hidden sm:inline">//</span>
+          <p>ELEVATING DIGITAL INFRASTRUCTURE</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="terms.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">TERMS & CONDITIONS</a>
+          <a href="privacy.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">PRIVACY POLICY</a>
+          <a href="mailto:hello@vellumestudio.com.au" class="hover:text-[#0A0A0A] transition-colors cursor-hover">EMAIL</a>
+          <a href="https://www.instagram.com/vellumestudios/" target="_blank" class="hover:text-[#0A0A0A] transition-colors cursor-hover flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            INSTAGRAM
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    // Booking Form Specific Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('brief');
+      const fileBtn = document.getElementById('btn-upload-trigger');
+      const fileNameDisplay = document.getElementById('file-name-display');
+      const fileError = document.getElementById('file-error');
+      const form = document.getElementById('booking-form');
+
+      if(fileBtn && fileInput) {
+        fileBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', (e) => {
+          fileError.classList.add('hidden');
+          if(e.target.files.length > 0) {
+            const file = e.target.files[0];
+            if(file.size > 5 * 1024 * 1024) { // 5MB limit
+              fileError.classList.remove('hidden');
+              fileNameDisplay.textContent = 'File too large.';
+              fileInput.value = ''; // Reset
+            } else {
+              fileNameDisplay.textContent = file.name;
+            }
+          } else {
+            fileNameDisplay.textContent = 'No file selected.';
+          }
+        });
+      }
+
+      if(form) {
+        form.addEventListener('submit', (e) => {
+          const fileError = document.getElementById('file-error');
+          // Double check file size on submit just in case
+          if(!fileError.classList.contains('hidden')) {
+            e.preventDefault();
+            alert("Please remove the oversized file before submitting.");
+          }
+          // Otherwise, allow the form to submit to formsubmit.co naturally!
+        });
+      }
+    });
+  </script>
+</body>
+</html>
