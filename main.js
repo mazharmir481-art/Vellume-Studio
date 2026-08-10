@@ -310,32 +310,27 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'SUNBEAM BAGEL & COFFEE',
         image: './images/sunbeam-cover.png',
-        subtext: 'Hospitality & Brand Architecture',
-        widthClass: 'w-[280px] sm:w-[500px]'
+        widthClass: 'w-[85vw] sm:w-[500px]'
       },
       {
         title: 'EVER CLINIC',
         image: './images/ever-cover.png',
-        subtext: 'Medical Aesthetics & UI/UX',
-        widthClass: 'w-[220px] sm:w-[350px]'
+        widthClass: 'w-[85vw] sm:w-[350px]'
       },
       {
         title: 'YLEM TIMEPIECES',
         image: './images/ylem-cover.png',
-        subtext: 'Precision 3D & Product',
-        widthClass: 'w-[320px] sm:w-[600px]'
+        widthClass: 'w-[85vw] sm:w-[600px]'
       },
       {
         title: 'JOURNEY PORTFOLIO',
         image: './images/journey-cover.png',
-        subtext: 'WebGL & Interactive Canvas',
-        widthClass: 'w-[240px] sm:w-[400px]'
+        widthClass: 'w-[85vw] sm:w-[400px]'
       },
       {
         title: 'CRAV SMASH BURGER',
         image: './images/crav-cover.png',
-        subtext: 'Vibrant E-Commerce Brand',
-        widthClass: 'w-[300px] sm:w-[550px]'
+        widthClass: 'w-[85vw] sm:w-[550px]'
       }
     ];
 
@@ -353,11 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="relative w-full h-full overflow-hidden bg-[#0A0A0A] flex items-center justify-center">
           <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none" />
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(10,10,10,0.8)_100%)] shadow-[inset_0_0_60px_20px_rgba(10,10,10,0.7)]"></div>
           <div class="dim-overlay absolute inset-0 bg-black/40 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"></div>
           <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10 text-[#F5F5F3] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-            <p class="font-mono-tech text-[10px] sm:text-xs uppercase tracking-widest text-[#CCCCCC] mb-0.5">${item.subtext}</p>
-            <h3 class="font-heading font-black text-base sm:text-xl md:text-2xl uppercase tracking-tighter text-[#F5F5F3]">${item.title}</h3>
+            <h3 class="font-heading font-black text-lg sm:text-xl md:text-2xl uppercase tracking-tighter text-[#F5F5F3]">${item.title}</h3>
           </div>
         </div>
       `;
