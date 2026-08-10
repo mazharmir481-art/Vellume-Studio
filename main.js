@@ -1,3 +1,32 @@
+// Instagram / In-App Browser Detector & Blocker
+(function() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isInstagram = (ua.indexOf('Instagram') > -1) || (ua.indexOf('FBAN') > -1) || (ua.indexOf('FBAV') > -1);
+  
+  if (isInstagram) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.createElement('div');
+      overlay.className = 'fixed inset-0 z-[999999] bg-[#0A0A0A] text-[#F5F5F3] flex flex-col items-center justify-center p-8 text-center';
+      overlay.innerHTML = `
+        <h1 class="font-heading font-black text-2xl md:text-4xl uppercase tracking-tighter mb-4 text-white">In-App Browser Detected</h1>
+        <p class="font-body text-base md:text-xl text-[#CCCCCC] mb-8 max-w-md mx-auto">
+          Instagram's built-in browser restricts advanced graphics, degrades performance, and often loads outdated cached pages.
+        </p>
+        <div class="font-mono-tech text-xs md:text-sm text-emerald-400 border border-[#222222] bg-[#111111] p-6 text-left inline-block">
+          <div class="mb-2 uppercase text-[#888888] tracking-widest">// ACTION REQUIRED</div>
+          <div>1. Tap the three dots <strong>(...)</strong> in the top right corner.</div>
+          <div class="mt-2">2. Select <strong>"Open in System Browser"</strong> (Safari/Chrome).</div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+      
+      // Stop further GSAP/Locomotive initialization
+      window.stop();
+    });
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Locomotive Scroll & GSAP ScrollTrigger Integration
   let locoScroll = null;
