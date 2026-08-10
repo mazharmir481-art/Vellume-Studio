@@ -367,8 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.marginLeft = `-${cardWidth / 2}px`;
 
       card.innerHTML = `
-        <div class="relative w-full h-full overflow-hidden bg-[#0A0A0A]">
+        <div class="relative w-full h-full overflow-hidden bg-[#0A0A0A] flex items-center justify-center">
           <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover pointer-events-none" />
+          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(10,10,10,0.8)_100%)] shadow-[inset_0_0_60px_20px_rgba(10,10,10,0.7)]"></div>
           <div class="dim-overlay absolute inset-0 bg-black pointer-events-none transition-opacity duration-500" style="opacity: 0;"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 z-10 text-[#F5F5F3] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent" style="text-shadow: 0 4px 16px rgba(0,0,0,0.95);">
             <p class="font-mono-tech text-[10px] sm:text-xs uppercase tracking-widest text-[#CCCCCC] mb-0.5">${item.subtext}</p>

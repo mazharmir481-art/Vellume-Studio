@@ -26,7 +26,7 @@
   
   <!-- Theme & Favicon -->
   <meta name="theme-color" content="#0A0A0A" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon" type="image/png" href="./images/logo_transparent.png?v=3">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -43,7 +43,7 @@
   <!-- Locomotive Scroll JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
-<body class="bg-[#F5F5F3] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F5F5F3] antialiased">
+<body class="bg-[#F5F5F3] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F5F5F3] antialiased overflow-x-hidden">
 
   <!-- Custom Cursor Dot -->
   <div id="custom-cursor"></div>
@@ -55,8 +55,9 @@
     <div class="max-w-[1600px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#" class="font-heading font-extrabold text-xl md:text-2xl tracking-tighter cursor-hover">
-        VELLUME STUDIO
+      <a href="index.html" class="flex items-center gap-3 cursor-hover">
+        <img src="./images/logo_transparent.png" alt="Vellume Logo" class="h-10 w-10 object-contain">
+        <span class="font-heading font-extrabold text-xl md:text-2xl tracking-tighter uppercase mt-1">VELLUME STUDIO</span>
       </a>
 
       <!-- Location & Action -->
@@ -116,8 +117,8 @@
       </section>
 
       <!-- 3. INFINITE TYPOGRAPHY MARQUEE -->
-      <section data-scroll-section class="marquee-container py-4 font-mono-tech text-sm sm:text-base font-bold uppercase tracking-widest text-[#0A0A0A]">
-        <div class="marquee-content flex items-center gap-12">
+      <section data-scroll-section class="marquee-container w-full overflow-hidden py-4 font-mono-tech text-sm sm:text-base font-bold uppercase tracking-widest text-[#0A0A0A]">
+        <div class="marquee-content inline-flex items-center gap-12">
           <span>VELLUME STUDIO // 60FPS ENGINEERING</span>
           <span class="text-[#666666]">//</span>
           <span>ARCHITECTURAL GRIDS</span>
@@ -273,7 +274,7 @@
           <div class="pb-8 mb-12 border-b border-[#222222] flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <div class="font-mono-tech text-xs text-[#888888] uppercase tracking-widest mb-2">// SPECIAL INITIATIVE</div>
-              <h2 class="font-heading font-black text-4xl sm:text-6xl md:text-8xl tracking-tighter uppercase text-white leading-none">
+              <h2 class="font-heading font-black text-4xl sm:text-6xl md:text-8xl tracking-tighter uppercase text-white leading-none break-words">
                 THE TIER-1 SPRINT
               </h2>
             </div>
@@ -371,7 +372,7 @@
           <span class="hidden sm:inline">//</span>
           <p>ELEVATING DIGITAL INFRASTRUCTURE</p>
         </div>
-        <div class="flex items-center gap-6">
+        <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 mt-4 sm:mt-0">
           <a href="terms.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">TERMS & CONDITIONS</a>
           <a href="privacy.html" class="hover:text-[#0A0A0A] transition-colors cursor-hover">PRIVACY POLICY</a>
           <a href="mailto:hello@vellumestudio.com.au" class="hover:text-[#0A0A0A] transition-colors cursor-hover">EMAIL</a>
