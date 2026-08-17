@@ -80,7 +80,7 @@
     <main class="relative z-10">
 
       <!-- 2. HERO SECTION (FULL HEIGHT TOP COVERAGE) -->
-      <section id="hero-section" data-scroll-section class="relative border-b border-[#0A0A0A] pt-36 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 max-w-[1600px] mx-auto min-h-screen flex flex-col justify-between overflow-hidden bg-black text-[#F5F5F3]">
+      <section id="hero-section" data-scroll-section class="relative border-b border-[#0A0A0A] pt-36 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 min-h-screen flex flex-col justify-between overflow-hidden bg-black text-[#F5F5F3]">
         
         <!-- Hero Background (Static Image) -->
         <div class="absolute inset-0 z-0 pointer-events-none">
@@ -91,7 +91,7 @@
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)]"></div>
         </div>
 
-        <div class="relative z-10 my-auto w-full max-w-full">
+        <div class="relative z-10 my-auto w-full max-w-[1600px] mx-auto">
           <!-- Split Text Animated Hero Title (Sleeker Fit) -->
           <h1 id="hero-title" class="font-heading font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-tighter uppercase mb-6 text-[#F5F5F3] max-w-full drop-shadow-lg">
             <span class="block">TRANSFORM</span>
@@ -146,12 +146,12 @@
             <h2 class="text-4xl md:text-6xl font-heading font-black text-[#0A0A0A] tracking-tighter uppercase">SELECTED BUILDS</h2>
           </div>
           <div class="hidden sm:flex items-center gap-2 font-mono-tech text-xs text-[#666666]">
-            <span>[ SCROLL TO EXPLORE ]</span>
+            <span>[ CLICK CARD TO FOCUS ]</span>
           </div>
         </div>
 
-        <!-- Horizontal Scrolling Stage -->
-        <div id="carousel-stage" class="w-full">
+        <!-- 3D Carousel Stage -->
+        <div id="carousel-stage" class="relative w-full flex-grow flex items-center justify-center outline-none cursor-pointer" style="perspective: 1600px; min-height: 480px;">
           <!-- Cards injected via JS -->
         </div>
       </section>
@@ -263,6 +263,29 @@
           </li>
 
         </ul>
+
+        <!-- Secondary Services Grid -->
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mt-10">
+          <p class="font-mono-tech text-[10px] uppercase tracking-widest text-[#666666] mb-4">// ALSO AVAILABLE</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#0A0A0A]">
+            <div class="bg-[#F5F5F3] hover:bg-[#0A0A0A] hover:text-[#F5F5F3] transition-colors duration-200 p-5 md:p-6 cursor-pointer group">
+              <span class="font-mono-tech text-[10px] text-[#999999] group-hover:text-[#666666] tracking-widest block mb-1.5">(05)</span>
+              <h4 class="font-heading font-bold text-sm md:text-base tracking-tight uppercase">Social Media Management</h4>
+            </div>
+            <div class="bg-[#F5F5F3] hover:bg-[#0A0A0A] hover:text-[#F5F5F3] transition-colors duration-200 p-5 md:p-6 cursor-pointer group">
+              <span class="font-mono-tech text-[10px] text-[#999999] group-hover:text-[#666666] tracking-widest block mb-1.5">(06)</span>
+              <h4 class="font-heading font-bold text-sm md:text-base tracking-tight uppercase">Digital Marketing</h4>
+            </div>
+            <div class="bg-[#F5F5F3] hover:bg-[#0A0A0A] hover:text-[#F5F5F3] transition-colors duration-200 p-5 md:p-6 cursor-pointer group">
+              <span class="font-mono-tech text-[10px] text-[#999999] group-hover:text-[#666666] tracking-widest block mb-1.5">(07)</span>
+              <h4 class="font-heading font-bold text-sm md:text-base tracking-tight uppercase">SEO Services</h4>
+            </div>
+            <div class="bg-[#F5F5F3] hover:bg-[#0A0A0A] hover:text-[#F5F5F3] transition-colors duration-200 p-5 md:p-6 cursor-pointer group">
+              <span class="font-mono-tech text-[10px] text-[#999999] group-hover:text-[#666666] tracking-widest block mb-1.5">(08)</span>
+              <h4 class="font-heading font-bold text-sm md:text-base tracking-tight uppercase">Video Production</h4>
+            </div>
+          </div>
+        </div>
       </section>
 
 
@@ -393,5 +416,38 @@
 
   <!-- Main JavaScript File -->
   <script src="main.js"></script>
+
+  <!-- Sophiie AI Chatbot -->
+  <script data-cfasync="false">
+    (function () {
+      try { window.sophiie?.chat?.destroy?.(); } catch (e) {}
+      var loaded = false;
+      function init() {
+        if (loaded) return;
+        loaded = true;
+        window.sophiie.chat.load({
+          orgId: 'org_sz7uYQbUEwLYuD891AuTfhhqX4P',
+          render: { mode: 'overlay' }
+        });
+      }
+      if (typeof window.sophiie?.chat?.load === 'function') { init(); return; }
+      var s = document.createElement('script');
+      s.async = true;
+      s.type = 'module';
+      s.setAttribute('data-cfasync', 'false');
+      s.addEventListener('load', function () {
+        if (typeof window.sophiie?.chat?.load === 'function') init();
+        else console.error('[sophiie] chatbot bundle loaded but did not expose window.sophiie.chat.load');
+      });
+      s.addEventListener('error', function () { console.error('[sophiie] chatbot bundle failed to load'); });
+      s.src = 'https://cdn.sophiie.ai/chatbot/bundle.mjs';
+      (document.head || document.documentElement).appendChild(s);
+      (function fallback() {
+        if (loaded) return;
+        if (typeof window.sophiie?.chat?.load === 'function') { init(); return; }
+        setTimeout(fallback, 1000);
+      })();
+    })();
+  </script>
 </body>
 </html>

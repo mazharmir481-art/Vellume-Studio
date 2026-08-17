@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeRow = null;
   });
 
-  // 4. GSAP Horizontal Scroll Gallery (SELECTED BUILDS - Alternating Sizes)
+  // 4. GSAP 3D Coverflow Physics Translation (SELECTED BUILDS - 16:9 ASPECT RATIO)
   const init3DCoverflow = () => {
     const stage = document.getElementById('carousel-stage');
     if (!stage) return;
@@ -339,52 +339,134 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'SUNBEAM BAGEL & COFFEE',
         image: './images/sunbeam-cover.png',
-        widthClass: 'w-[85vw] sm:w-[500px]'
+        subtext: 'Hospitality & Brand Architecture'
       },
       {
         title: 'EVER CLINIC',
         image: './images/ever-cover.png',
-        widthClass: 'w-[85vw] sm:w-[350px]'
+        subtext: 'Medical Aesthetics & UI/UX'
       },
       {
         title: 'YLEM TIMEPIECES',
         image: './images/ylem-cover.png',
-        widthClass: 'w-[85vw] sm:w-[600px]'
+        subtext: 'Precision 3D & Product'
       },
       {
         title: 'JOURNEY PORTFOLIO',
         image: './images/journey-cover.png',
-        widthClass: 'w-[85vw] sm:w-[400px]'
+        subtext: 'WebGL & Interactive Canvas'
       },
       {
         title: 'CRAV SMASH BURGER',
         image: './images/crav-cover.png',
-        widthClass: 'w-[85vw] sm:w-[550px]'
+        subtext: 'Vibrant E-Commerce Brand'
       }
     ];
 
-    stage.className = 'w-full flex items-center gap-6 md:gap-10 overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 md:px-16 py-8';
-    stage.style = ''; // Remove previous inline styles
+    let active = 0;
+    const n = portfolioData.length;
+    const MAX_VISIBLE = 2;
+    const DEPTH = 260;
+    const SCALE_STEP = 0.15;
+    const tilt = 12;
+    const sideTilt = 6;
+    const gap = 10;
 
     stage.innerHTML = '';
 
-    portfolioData.forEach((item, i) => {
+    const getDimensions = () => {
+      const isSmall = window.innerWidth < 640;
+      const cardWidth = isSmall ? Math.min(window.innerWidth - 40, 360) : 560;
+      const cardHeight = Math.round(cardWidth * (9 / 16));
+      return { cardWidth, cardHeight };
+    };
+
+    const { cardWidth, cardHeight } = getDimensions();
+
+    const cards = portfolioData.map((item, i) => {
       const card = document.createElement('div');
-      card.className = `flex-shrink-0 snap-center rounded-none overflow-hidden bg-[#0A0A0A] border border-[#222222] cursor-pointer cursor-hover shadow-2xl relative group ${item.widthClass}`;
-      // Use aspect ratio 16:9 or auto based on width
-      card.style.aspectRatio = '16/9';
+      card.className = 'coverflow-card absolute rounded-none overflow-hidden bg-[#0A0A0A] border border-[#222222] cursor-pointer cursor-hover select-none shadow-2xl';
+      card.style.width = `${cardWidth}px`;
+      card.style.height = `${cardHeight}px`;
+      card.style.transformStyle = 'preserve-3d';
+      card.style.position = 'absolute';
+      card.style.top = '50%';
+      card.style.left = '50%';
+      card.style.marginTop = `-${cardHeight / 2}px`;
+      card.style.marginLeft = `-${cardWidth / 2}px`;
 
       card.innerHTML = `
         <div class="relative w-full h-full overflow-hidden bg-[#0A0A0A] flex items-center justify-center">
-          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none" />
-          <div class="dim-overlay absolute inset-0 bg-black/40 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10 text-[#F5F5F3] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-            <h3 class="font-heading font-black text-lg sm:text-xl md:text-2xl uppercase tracking-tighter text-[#F5F5F3]">${item.title}</h3>
+          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover pointer-events-none" />
+          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(10,10,10,0.8)_100%)] shadow-[inset_0_0_60px_20px_rgba(10,10,10,0.7)]"></div>
+          <div class="dim-overlay absolute inset-0 bg-black pointer-events-none transition-opacity duration-500" style="opacity: 0;"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 z-10 text-[#F5F5F3] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent" style="text-shadow: 0 4px 16px rgba(0,0,0,0.95);">
+            <p class="font-mono-tech text-[10px] sm:text-xs uppercase tracking-widest text-[#CCCCCC] mb-0.5">${item.subtext}</p>
+            <h3 class="font-heading font-black text-lg sm:text-2xl uppercase tracking-tighter text-[#F5F5F3]">${item.title}</h3>
           </div>
         </div>
       `;
 
+      card.addEventListener('click', () => {
+        if (active !== i) {
+          active = i;
+          updateCoverflow();
+        }
+      });
+
       stage.appendChild(card);
+      return card;
+    });
+
+    const updateCoverflow = () => {
+      cards.forEach((card, i) => {
+        let rel = i - active;
+        if (rel > n / 2) rel -= n;
+        if (rel < -n / 2) rel += n;
+
+        const ax = Math.abs(rel);
+        const sc = Math.max(0.4, 1 - ax * SCALE_STEP);
+        const tx = rel * (gap * 32);
+        const tz = -ax * DEPTH;
+        const ry = -rel * tilt;
+        const rz = rel * sideTilt;
+        const isActive = rel === 0;
+
+        const overlay = card.querySelector('.dim-overlay');
+        if (overlay && typeof gsap !== 'undefined') {
+          gsap.to(overlay, { opacity: isActive ? 0 : 0.6, duration: 0.6, ease: 'power2.out' });
+        }
+
+        card.style.zIndex = 100 - Math.round(ax * 10);
+        card.style.visibility = ax > MAX_VISIBLE ? 'hidden' : 'visible';
+
+        if (typeof gsap !== 'undefined') {
+          gsap.to(card, {
+            x: tx,
+            z: tz,
+            rotateY: ry,
+            rotateZ: rz,
+            scale: sc,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+        } else {
+          card.style.transform = `translate3d(${tx}px, 0px, ${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
+        }
+      });
+    };
+
+    updateCoverflow();
+
+    window.addEventListener('resize', () => {
+      const { cardWidth, cardHeight } = getDimensions();
+      cards.forEach((card) => {
+        card.style.width = `${cardWidth}px`;
+        card.style.height = `${cardHeight}px`;
+        card.style.marginTop = `-${cardHeight / 2}px`;
+        card.style.marginLeft = `-${cardWidth / 2}px`;
+      });
+      updateCoverflow();
     });
   };
 
