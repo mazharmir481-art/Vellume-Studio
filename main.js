@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
       ScrollTrigger.refresh();
+
+      // Ensure layout recalculates after all images/fonts are fully loaded
+      window.addEventListener('load', () => {
+        locoScroll.update();
+        ScrollTrigger.refresh();
+      });
     }
   }
 
@@ -375,8 +381,18 @@ document.addEventListener('DOMContentLoaded', () => {
     stage.innerHTML = '';
 
     const getDimensions = () => {
-      const isSmall = window.innerWidth < 640;
-      const cardWidth = isSmall ? Math.min(window.innerWidth - 40, 360) : 560;
+      const w = window.innerWidth;
+      const isSmall = w < 640;
+      const isTablet = w >= 640 && w < 1024;
+      
+      let cardWidth;
+      if (isSmall) {
+        cardWidth = Math.min(w - 40, 360);
+      } else if (isTablet) {
+        cardWidth = 560; // Keep mobile/tablet intact
+      } else {
+        cardWidth = 860; // Optimized larger size for PC/Laptop
+      }
       const cardHeight = Math.round(cardWidth * (9 / 16));
       return { cardWidth, cardHeight };
     };
@@ -426,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const ax = Math.abs(rel);
         const sc = Math.max(0.4, 1 - ax * SCALE_STEP);
-        const tx = rel * (gap * 32);
+        const tx = rel * (cardWidth * 0.55); // Dynamic gap based on card size
         const tz = -ax * DEPTH;
         const ry = -rel * tilt;
         const rz = rel * sideTilt;
