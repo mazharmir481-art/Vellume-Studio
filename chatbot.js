@@ -21,41 +21,42 @@
     
     container.innerHTML = `
       <!-- Chat Window -->
-      <div id="vel-chat-window" class="w-[380px] max-w-[90vw] h-[550px] max-h-[80vh] bg-[#0A0A0A] border-2 border-[#F5F5F3] shadow-[8px_8px_0_0_#F5F5F3] flex flex-col mb-4 pointer-events-auto origin-bottom-right scale-0 opacity-0 transition-none">
+      <div id="vel-chat-window" class="w-[420px] max-w-[95vw] h-[650px] max-h-[85vh] bg-[#0A0A0A] border-2 border-[#F5F5F3] shadow-[12px_12px_0_0_#F5F5F3] flex flex-col mb-6 pointer-events-auto origin-bottom-right scale-0 opacity-0 transition-none">
         
         <!-- Header -->
-        <div class="h-16 border-b-2 border-[#222222] flex items-center justify-between px-5 bg-black">
-          <div class="flex items-center gap-3">
-            <div class="w-3 h-3 bg-emerald-400 rounded-none animate-pulse"></div>
-            <span class="font-heading font-black tracking-tighter text-[#F5F5F3] text-xl uppercase">VEL // SYSTEM</span>
+        <div class="h-20 border-b-2 border-[#222222] flex items-center justify-between px-6 bg-black">
+          <div class="flex items-center gap-4">
+            <div class="w-4 h-4 bg-emerald-400 rounded-none animate-pulse"></div>
+            <span class="font-heading font-black tracking-tighter text-[#F5F5F3] text-2xl uppercase">VEL // SYSTEM</span>
           </div>
-          <button id="vel-close-btn" class="font-mono-tech text-xs text-[#888888] hover:text-[#F5F5F3] uppercase tracking-widest cursor-pointer">[ CLOSE ]</button>
+          <button id="vel-close-btn" class="font-mono-tech text-sm text-[#888888] hover:text-[#F5F5F3] uppercase tracking-widest cursor-pointer">[ CLOSE ]</button>
         </div>
 
         <!-- Chat Area -->
-        <div id="vel-chat-feed" class="flex-grow overflow-y-auto p-5 space-y-6 bg-black font-body text-sm text-[#CCCCCC]">
+        <div id="vel-chat-feed" class="flex-grow overflow-y-auto p-6 space-y-8 bg-black font-body text-base text-[#CCCCCC]">
           <!-- Initial Message -->
           <div class="flex flex-col items-start w-full">
-            <span class="font-mono-tech text-[10px] text-[#666666] mb-1">// SYSTEM_INIT</span>
-            <div class="bg-[#111111] border border-[#222222] p-4 text-[#F5F5F3] max-w-[90%] font-medium">
+            <span class="font-mono-tech text-xs text-[#666666] mb-2">// SYSTEM_INIT</span>
+            <div class="bg-[#111111] border border-[#222222] p-5 text-[#F5F5F3] max-w-[90%] font-medium text-lg leading-relaxed">
               Vellume infrastructure online. I am Vel. Are you looking to upgrade your digital presence or start a new build?
             </div>
           </div>
         </div>
 
         <!-- Input Area -->
-        <div class="h-16 border-t-2 border-[#222222] flex bg-black relative">
-          <div id="vel-loading" class="absolute inset-0 bg-[#0A0A0A]/90 flex items-center justify-center font-mono-tech text-xs text-emerald-400 tracking-widest hidden z-10">
+        <div class="h-20 border-t-2 border-[#222222] flex bg-black relative">
+          <div id="vel-loading" class="absolute inset-0 bg-[#0A0A0A]/90 flex items-center justify-center font-mono-tech text-sm text-emerald-400 tracking-widest hidden z-10">
             [ PROCESSING ]
           </div>
-          <input type="text" id="vel-input" class="w-full h-full bg-transparent text-[#F5F5F3] px-5 font-body focus:outline-none placeholder:text-[#444444]" placeholder="Type your objective..." autocomplete="off">
-          <button id="vel-send-btn" class="h-full px-6 bg-[#F5F5F3] text-[#0A0A0A] font-heading font-black tracking-tighter uppercase hover:bg-emerald-400 transition-colors">SEND</button>
+          <input type="text" id="vel-input" class="w-full h-full bg-transparent text-[#F5F5F3] px-6 font-body text-lg focus:outline-none placeholder:text-[#444444]" placeholder="Type your objective..." autocomplete="off">
+          <button id="vel-send-btn" class="h-full px-8 bg-[#F5F5F3] text-[#0A0A0A] font-heading font-black text-xl tracking-tighter uppercase hover:bg-emerald-400 transition-colors">SEND</button>
         </div>
       </div>
 
       <!-- Launcher Button -->
-      <button id="vel-launcher" class="w-16 h-16 bg-[#F5F5F3] border-2 border-[#0A0A0A] text-[#0A0A0A] rounded-full shadow-[4px_4px_0_0_#0A0A0A] flex items-center justify-center font-heading font-black text-2xl hover:bg-emerald-400 hover:text-black hover:scale-105 transition-all duration-300 pointer-events-auto">
-        V.
+      <button id="vel-launcher" class="h-20 px-8 bg-[#F5F5F3] border-2 border-[#0A0A0A] text-[#0A0A0A] rounded-none shadow-[8px_8px_0_0_#0A0A0A] flex items-center justify-center gap-4 font-heading font-black text-2xl md:text-3xl tracking-tighter uppercase hover:bg-emerald-400 hover:shadow-[12px_12px_0_0_#0A0A0A] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 pointer-events-auto">
+        <div class="w-4 h-4 bg-[#0A0A0A] rounded-none animate-pulse"></div>
+        START INQUIRY // VEL
       </button>
     `;
     
