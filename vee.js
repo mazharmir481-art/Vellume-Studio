@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     
     <!-- Floating Action Button -->
-    <button id="vee-fab" class="w-14 h-14 sm:w-16 sm:h-16 bg-[#050505] border border-white/10 rounded-full flex items-center justify-center shadow-[0_10px_40px_rgba(0,0,0,0.8)] pointer-events-auto hover:scale-105 hover:border-white/30 transition-all duration-300 group cursor-hover relative overflow-hidden">
+    <button id="vee-fab" class="w-14 h-14 sm:w-16 sm:h-16 bg-[#0A0A0A] border-2 border-[#F5F5F3] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(245,245,243,0.15)] pointer-events-auto hover:scale-105 hover:shadow-[0_0_40px_rgba(245,245,243,0.25)] transition-all duration-300 group cursor-hover relative overflow-hidden">
       <!-- Logo Icon -->
-      <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
+      <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-full h-full object-cover p-2 relative z-10 transition-transform duration-300 group-hover:scale-110">
     </button>
   `;
   
