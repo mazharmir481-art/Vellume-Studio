@@ -1,4 +1,4 @@
-﻿// vee.js - Vee AI Assistant for Vellume Studio (Client-Side)
+// vee.js - Vee AI Assistant for Vellume Studio (Client-Side)
 
 document.addEventListener('DOMContentLoaded', () => {
   // Inject Vee UI into the body
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <!-- Header -->
       <div class="h-14 sm:h-16 border-b border-white/5 flex items-center justify-between px-5 sm:px-6 bg-transparent">
         <div class="flex items-center gap-2.5">
-          <img src="./images/vee-logo.png" alt="Vee Logo" class="w-8 h-8 object-contain">
+          <img src="./images/logo_transparent.png" alt="Vee Logo" class="w-8 h-8 object-contain">
           <span class="font-bold text-[#F5F5F3] text-sm sm:text-base tracking-widest uppercase">Vee</span>
         </div>
         <button id="vee-close-btn" class="text-[#666666] hover:text-[#F5F5F3] transition-colors cursor-hover">
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Centered Welcome State -->
         <div id="vee-welcome-state" class="flex flex-col items-center text-center gap-4 pt-6 sm:pt-8 pb-4">
           <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/10 bg-[#111111] flex items-center justify-center p-2 shadow-lg overflow-hidden">
-             <img src="./images/vee-logo.png" class="w-full h-full object-contain filter brightness-200">
+             <img src="./images/logo_transparent.png" class="w-full h-full object-contain">
           </div>
           <div class="flex flex-col gap-1">
             <h3 class="text-xl sm:text-2xl font-bold text-white tracking-wide">How can I help you today?</h3>
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <!-- Floating Action Button -->
     <button id="vee-fab" class="w-14 h-14 sm:w-16 sm:h-16 bg-[#0A0A0A] border-2 border-[#F5F5F3] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(245,245,243,0.15)] pointer-events-auto hover:scale-105 hover:shadow-[0_0_40px_rgba(245,245,243,0.25)] transition-all duration-300 group cursor-hover relative overflow-hidden">
       <!-- Logo Icon -->
-      <img src="./images/vee-logo.png" alt="Vee Logo" class="w-full h-full object-contain p-1.5 sm:p-2 relative z-10 transition-transform duration-300 group-hover:scale-110 filter brightness-200">
+      <img src="./images/logo_transparent.png" alt="Vee Logo" class="w-full h-full object-contain p-1.5 sm:p-2 relative z-10 transition-transform duration-300 group-hover:scale-110">
     </button>
   `;
   
