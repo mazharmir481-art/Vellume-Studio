@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY; 
     
     if (!GEMINI_API_KEY) {
-      return res.status(500).json({ reply: "API Key is missing from Vercel Environment Variables." });
+      return res.status(200).json({ reply: "My API key hasn't been configured yet. Please email hello@vellumestudio.com.au directly." });
     }
     
     // Safety regulations and persona
@@ -64,6 +64,6 @@ Keep your answers concise, punchy, and strictly related to web development, bran
     return res.status(200).json({ reply });
   } catch (error) {
     console.error("Function Error:", error);
-    return res.status(500).json({ error: 'Failed to process request' });
+    return res.status(200).json({ reply: "I'm experiencing a temporary issue. Please email hello@vellumestudio.com.au directly." });
   }
 };
