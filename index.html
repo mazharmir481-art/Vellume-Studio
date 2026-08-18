@@ -45,6 +45,27 @@
 </head>
 <body class="bg-[#F5F5F3] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F5F5F3] antialiased overflow-x-hidden">
 
+  <!-- INITIAL LOADER -->
+  <div id="vel-loader" class="fixed inset-0 z-[999999] bg-[#0A0A0A] flex flex-col justify-between p-6 md:p-12 text-[#F5F5F3]">
+    <div class="font-mono-tech text-xs tracking-widest text-[#888888] uppercase">
+      // SYSTEM INITIALIZING
+    </div>
+    
+    <div class="flex flex-col items-start gap-4">
+      <div id="vel-loader-text" class="font-heading font-black text-6xl md:text-9xl tracking-tighter uppercase leading-none">
+        0%
+      </div>
+      <!-- Progress Bar -->
+      <div class="w-full max-w-sm h-1 bg-[#222222] relative overflow-hidden">
+        <div id="vel-loader-progress" class="absolute inset-y-0 left-0 bg-[#F5F5F3] w-0"></div>
+      </div>
+    </div>
+    
+    <div class="font-mono-tech text-xs tracking-widest text-[#888888] uppercase text-right">
+      VELLUME STUDIO &copy; 2026
+    </div>
+  </div>
+
   <!-- Custom Cursor Dot -->
   <div id="custom-cursor"></div>
 

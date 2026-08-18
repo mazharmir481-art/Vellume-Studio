@@ -529,23 +529,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
   init3DCoverflow();
 
-  // 5. GSAP Hero Load Animations
-  if (typeof gsap !== 'undefined') {
-    gsap.from('#hero-title', {
-      y: 40,
-      opacity: 0,
-      duration: 1.0,
-      ease: 'power3.out',
-      delay: 0.1
-    });
+  // 5. System Loader & Deferred Hero Animations
+  const loader = document.getElementById('vel-loader');
+  const loaderText = document.getElementById('vel-loader-text');
+  const loaderProgress = document.getElementById('vel-loader-progress');
 
-    gsap.from('#hero-subheadline', {
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      delay: 0.4
+  const playHeroAnimations = () => {
+    if (typeof gsap !== 'undefined') {
+      gsap.from('#hero-title', {
+        y: 40,
+        opacity: 0,
+        duration: 1.0,
+        ease: 'power3.out',
+        delay: 0.1
+      });
+
+      gsap.from('#hero-subheadline', {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.4
+      });
+    }
+  };
+
+  if (loader && typeof gsap !== 'undefined') {
+    // Lock scroll during loading
+    document.body.style.overflow = 'hidden';
+    if (locoScroll) locoScroll.stop();
+
+    let progress = { value: 0 };
+    gsap.to(progress, {
+      value: 100,
+      duration: 2.2,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        if(loaderText) loaderText.innerHTML = Math.round(progress.value) + '%';
+        if(loaderProgress) loaderProgress.style.width = progress.value + '%';
+      },
+      onComplete: () => {
+        gsap.to(loader, {
+          yPercent: -100,
+          duration: 1.2,
+          ease: "expo.inOut",
+          onComplete: () => {
+            document.body.style.overflow = '';
+            if (locoScroll) locoScroll.start();
+            loader.remove();
+            playHeroAnimations();
+          }
+        });
+      }
     });
+  } else {
+    playHeroAnimations();
   }
 
   // 6. Magnetic Button Hover Effect
