@@ -555,8 +555,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (loader && typeof gsap !== 'undefined') {
-    // Lock scroll during loading
-    document.body.style.overflow = 'hidden';
     if (locoScroll) locoScroll.stop();
 
     let progress = { value: 0 };
@@ -574,7 +572,6 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 1.2,
           ease: "expo.inOut",
           onComplete: () => {
-            document.body.style.overflow = '';
             if (locoScroll) locoScroll.start();
             loader.remove();
             
@@ -582,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
               if (locoScroll) locoScroll.update();
               if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-            }, 100);
+            }, 300);
 
             playHeroAnimations();
           }
