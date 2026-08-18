@@ -1,12 +1,30 @@
-exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+module.exports = async (req, res) => {
+  // CORS setup in case it's needed
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS,POST');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
   
   try {
-    const { message } = JSON.parse(event.body);
-    // Securely reading the API key from environment variables (set in Netlify Dashboard)
+    // Vercel automatically parses JSON bodies
+    const message = req.body.message;
+    // Securely reading the API key from environment variables (set in Vercel Dashboard)
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY; 
+    
+    if (!GEMINI_API_KEY) {
+      return res.status(500).json({ reply: "API Key is missing from Vercel Environment Variables." });
+    }
     
     // Safety regulations and persona
     const systemInstruction = `You are Vee, the professional AI assistant for Vellume Studio (a high-end digital infrastructure and web development agency based in Adelaide). 
@@ -43,15 +61,9 @@ Keep your answers concise, punchy, and strictly related to web development, bran
       reply = "My core systems are offline due to an API error. Please try again later.";
     }
     
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ reply })
-    };
+    return res.status(200).json({ reply });
   } catch (error) {
     console.error("Function Error:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to process request' })
-    };
+    return res.status(500).json({ error: 'Failed to process request' });
   }
 };
