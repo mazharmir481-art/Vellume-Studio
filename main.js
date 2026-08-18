@@ -511,8 +511,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('resize', () => {
+      // Re-calculate dimensions but do not force a reload (prevents glitch loop on mobile scroll)
       if (window.innerWidth < 640) {
-        location.reload(); // Reload to swap logic on resize down to mobile
+        return; // If it's already mobile, let CSS/layout handle it natively
       }
       
       const { cardWidth, cardHeight } = getDimensions();

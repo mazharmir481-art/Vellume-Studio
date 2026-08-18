@@ -225,7 +225,7 @@
   };
 
   // Initialization
-  document.addEventListener('DOMContentLoaded', () => {
+  const initChatbot = () => {
     injectUI();
     
     document.getElementById('vel-launcher').addEventListener('click', openChat);
@@ -238,6 +238,12 @@
     inputEl.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleInput();
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbot);
+  } else {
+    initChatbot();
+  }
 
 })();
