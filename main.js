@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         locoScroll.update();
         ScrollTrigger.refresh();
       });
+
+      // Ultimate fix for layout shifts: automatically update scroll on height changes
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(() => {
+          if (locoScroll) locoScroll.update();
+          if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        }).observe(scrollContainer);
+      }
     }
   }
 
