@@ -230,6 +230,7 @@
 
   // Initialization
   const initChatbot = () => {
+    console.log("CHATBOT_INITIALIZED");
     injectUI();
     
     document.getElementById('vel-launcher').addEventListener('click', openChat);
@@ -244,10 +245,7 @@
     });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initChatbot);
-  } else {
-    initChatbot();
-  }
+  // Execute immediately since the script is at the end of the body
+  initChatbot();
 
 })();
