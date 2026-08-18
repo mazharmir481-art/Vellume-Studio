@@ -200,40 +200,7 @@
     });
   </script>
 
-  <!-- Sophiie AI Chatbot -->
-  <script data-cfasync="false">
-    (function () {
-      try { window.sophiie?.chat?.destroy?.(); } catch (e) {}
-      var loaded = false;
-      function init() {
-        if (loaded) return;
-        loaded = true;
-        window.sophiie.chat.load({
-          orgId: 'org_sz7uYQbUEwLYuD891AuTfhhqX4P',
-          name: 'Vel',
-          title: 'Vel',
-          poweredBy: 'Vellume Studio',
-          render: { mode: 'overlay' }
-        });
-      }
-      if (typeof window.sophiie?.chat?.load === 'function') { init(); return; }
-      var s = document.createElement('script');
-      s.async = true;
-      s.type = 'module';
-      s.setAttribute('data-cfasync', 'false');
-      s.addEventListener('load', function () {
-        if (typeof window.sophiie?.chat?.load === 'function') init();
-        else console.error('[sophiie] chatbot bundle loaded but did not expose window.sophiie.chat.load');
-      });
-      s.addEventListener('error', function () { console.error('[sophiie] chatbot bundle failed to load'); });
-      s.src = 'https://cdn.sophiie.ai/chatbot/bundle.mjs';
-      (document.head || document.documentElement).appendChild(s);
-      (function fallback() {
-        if (loaded) return;
-        if (typeof window.sophiie?.chat?.load === 'function') { init(); return; }
-        setTimeout(fallback, 1000);
-      })();
-    })();
-  </script>
+  <!-- Custom Vel Chatbot -->
+  <script src="chatbot.js"></script>
 </body>
 </html>

@@ -382,20 +382,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getDimensions = () => {
       const w = window.innerWidth;
-      const isSmall = w < 640;
       const isTablet = w >= 640 && w < 1024;
       
       let cardWidth;
-      if (isSmall) {
-        cardWidth = Math.min(w - 40, 360);
-      } else if (isTablet) {
-        cardWidth = 560; // Keep mobile/tablet intact
+      if (isTablet) {
+        cardWidth = 560; // Keep tablet intact
       } else {
         cardWidth = 860; // Optimized larger size for PC/Laptop
       }
       const cardHeight = Math.round(cardWidth * (9 / 16));
       return { cardWidth, cardHeight };
     };
+
+    const isMobile = window.innerWidth < 640;
+
+    // Remove Slider / Coverflow on Mobile - Standard vertical layout
+    if (isMobile) {
+      stage.style.perspective = 'none';
+      stage.style.minHeight = 'auto';
+      stage.className = 'w-full flex flex-col gap-6 px-6 pb-12';
+      stage.innerHTML = '';
+      
+      portfolioData.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'w-full aspect-video bg-[#0A0A0A] border border-[#222222] relative overflow-hidden shadow-xl';
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover pointer-events-none" />
+          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(10,10,10,0.8)_100%)] shadow-[inset_0_0_60px_20px_rgba(10,10,10,0.7)]"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 z-10 text-[#F5F5F3] pointer-events-none bg-gradient-to-t from-black/90 via-black/40 to-transparent" style="text-shadow: 0 4px 16px rgba(0,0,0,0.95);">
+            <p class="font-mono-tech text-[10px] sm:text-xs uppercase tracking-widest text-[#CCCCCC] mb-0.5">${item.subtext}</p>
+            <h3 class="font-heading font-black text-lg sm:text-2xl uppercase tracking-tighter text-[#F5F5F3]">${item.title}</h3>
+          </div>
+        `;
+        stage.appendChild(card);
+      });
+      return; // Stop initialization of 3D coverflow
+    }
 
     const { cardWidth, cardHeight } = getDimensions();
 
@@ -473,8 +495,26 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     updateCoverflow();
+    
+    // Infinite looping logic
+    let loopInterval = setInterval(() => {
+      active = (active + 1) % n;
+      updateCoverflow();
+    }, 3000);
+
+    stage.addEventListener('mouseenter', () => clearInterval(loopInterval));
+    stage.addEventListener('mouseleave', () => {
+      loopInterval = setInterval(() => {
+        active = (active + 1) % n;
+        updateCoverflow();
+      }, 3000);
+    });
 
     window.addEventListener('resize', () => {
+      if (window.innerWidth < 640) {
+        location.reload(); // Reload to swap logic on resize down to mobile
+      }
+      
       const { cardWidth, cardHeight } = getDimensions();
       cards.forEach((card) => {
         card.style.width = `${cardWidth}px`;
