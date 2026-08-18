@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <div id="vee-chat-window" class="w-[calc(100vw-2rem)] sm:w-[400px] md:w-[450px] h-[75vh] sm:h-[600px] max-h-[800px] bg-[#0A0A0A]/80 backdrop-blur-2xl border border-white/10 mb-4 flex flex-col pointer-events-auto transform transition-all duration-500 origin-bottom-right scale-0 opacity-0 shadow-[0_0_40px_rgba(0,0,0,0.5)] rounded-3xl overflow-hidden">
       <!-- Header -->
       <div class="h-14 sm:h-16 border-b border-white/5 flex items-center justify-between px-5 sm:px-6 bg-transparent">
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
+          <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-5 h-5 object-contain">
           <span class="font-bold text-[#F5F5F3] text-sm sm:text-base tracking-widest uppercase">Vee</span>
         </div>
         <button id="vee-close-btn" class="text-[#666666] hover:text-[#F5F5F3] transition-colors cursor-hover">
@@ -31,11 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
       
       <!-- Chat History -->
       <div id="vee-chat-history" class="flex-grow p-5 sm:p-6 overflow-y-auto flex flex-col gap-5 sm:gap-6 text-sm sm:text-base bg-transparent scroll-smooth">
-        <!-- Welcome Message -->
-        <div class="flex flex-col gap-1.5 items-start max-w-[90%]">
-          <span class="text-[10px] sm:text-xs text-[#666666] uppercase tracking-wider ml-1">Vee</span>
-          <div class="bg-[#1A1A1A]/90 text-[#F5F5F3] p-4 rounded-2xl rounded-bl-sm border border-white/5 leading-relaxed chat-bubble-anim">
-            Hi there! I'm Vee, your personal assistant here at Vellume Studio. How can I help bring your vision to life today?
+        <!-- Centered Welcome State -->
+        <div id="vee-welcome-state" class="flex flex-col items-center justify-center flex-grow text-center gap-4 h-full my-auto pt-8 sm:pt-12">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-white/10 bg-[#111111] flex items-center justify-center p-4 shadow-lg">
+             <img src="./images/logo_transparent.png" class="w-full h-full object-contain">
+          </div>
+          <div class="flex flex-col gap-1">
+            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-wide">How can I help you today?</h3>
+            <p class="text-xs sm:text-sm text-[#888888]">I'm Vee, your personal assistant at Vellume Studio.</p>
           </div>
         </div>
       </div>
@@ -89,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const addMessage = (text, sender) => {
     if (!text.trim()) return;
+    
+    // Remove welcome state if it exists
+    const welcomeState = document.getElementById('vee-welcome-state');
+    if (welcomeState) welcomeState.remove();
     
     const wrapper = document.createElement('div');
     wrapper.className = `flex flex-col gap-1.5 items-${sender === 'user' ? 'end' : 'start'} max-w-[90%] ${sender === 'user' ? 'self-end' : 'self-start'}`;
