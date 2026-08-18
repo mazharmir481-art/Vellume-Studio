@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject Vee UI into the body
   const veeContainer = document.createElement('div');
   veeContainer.id = 'vee-ai-container';
-  veeContainer.className = 'fixed bottom-6 right-6 z-[99999] font-mono-tech flex flex-col items-end pointer-events-none';
+  veeContainer.className = 'fixed bottom-6 right-6 z-[99999] font-body flex flex-col items-end pointer-events-none';
   
   veeContainer.innerHTML = `
     <!-- Chat Window (Hidden by default) -->
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <!-- Header -->
       <div class="h-14 border-b border-[#222222] flex items-center justify-between px-4 bg-[#111111]">
         <div class="flex items-center gap-3">
-          <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-          <span class="font-bold text-[#F5F5F3] text-sm tracking-widest uppercase">VEE // ASSISTANT</span>
+          <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+          <span class="font-bold text-[#F5F5F3] text-sm tracking-widest uppercase">Vee</span>
         </div>
         <button id="vee-close-btn" class="text-[#666666] hover:text-[#F5F5F3] transition-colors cursor-hover">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -47,15 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     
     <!-- Floating Action Button -->
-    <button id="vee-fab" class="w-14 h-14 bg-[#F5F5F3] border border-[#0A0A0A] rounded-full flex items-center justify-center shadow-lg pointer-events-auto hover:scale-105 transition-transform duration-300 group cursor-hover relative overflow-hidden">
-      <!-- Glow effect behind icon -->
-      <div class="absolute inset-0 bg-emerald-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-      
-      <!-- V Icon -->
-      <span class="font-heading font-black text-2xl text-[#0A0A0A] relative z-10 group-hover:text-emerald-600 transition-colors duration-300">V</span>
+    <button id="vee-fab" class="w-14 h-14 bg-[#0A0A0A] border border-[#333333] rounded-full flex items-center justify-center shadow-lg pointer-events-auto hover:scale-105 hover:bg-[#111111] transition-all duration-300 group cursor-hover relative overflow-hidden">
+      <!-- Logo Icon -->
+      <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-8 h-8 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
       
       <!-- Notification Dot -->
-      <div class="absolute top-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-[#F5F5F3] animate-pulse"></div>
+      <div class="absolute top-0 right-0 w-3 h-3 bg-white rounded-full border-2 border-[#0A0A0A] animate-pulse"></div>
     </button>
   `;
   
@@ -113,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chatHistory.scrollTop = chatHistory.scrollHeight;
   };
   
-  const handleSend = () => {
+  const handleSend = async () => {
     const text = inputField.value;
     if (!text.trim()) return;
     
@@ -121,10 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
     addMessage(text, 'user');
     inputField.value = '';
     
-    // Simulate Vee thinking
-    setTimeout(() => {
-      addMessage("I am currently in development mode. System full capabilities will be online shortly. Please direct inquiries to hello@vellumestudio.com.au.", 'vee');
-    }, 1000);
+    // Disable input while waiting
+    inputField.disabled = true;
+    inputField.placeholder = "VEE IS THINKING...";
+    
+    try {
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+      
+      if (!response.ok) {
+        throw new Error('API Error');
+      }
+      
+      const data = await response.json();
+      addMessage(data.reply, 'vee');
+    } catch (error) {
+      console.error(error);
+      addMessage("I'm currently offline or experiencing a connection error. Please email hello@vellumestudio.com.au directly.", 'vee');
+    } finally {
+      inputField.disabled = false;
+      inputField.placeholder = "INITIALIZE QUERY...";
+      inputField.focus();
+    }
   };
   
   sendBtn.addEventListener('click', handleSend);
