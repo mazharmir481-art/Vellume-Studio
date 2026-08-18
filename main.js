@@ -577,6 +577,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
             if (locoScroll) locoScroll.start();
             loader.remove();
+            
+            // Force recalculation of layout to prevent cut-offs at the bottom
+            setTimeout(() => {
+              if (locoScroll) locoScroll.update();
+              if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+            }, 100);
+
             playHeroAnimations();
           }
         });
