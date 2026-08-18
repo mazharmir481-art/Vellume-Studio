@@ -27,6 +27,12 @@
   }
 })();
 
+// Force scroll to top on refresh to prevent Locomotive Scroll height bugs
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Locomotive Scroll & GSAP ScrollTrigger Integration
   let locoScroll = null;
