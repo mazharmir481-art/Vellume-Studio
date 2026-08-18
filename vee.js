@@ -113,6 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
         "Of course. What kind of project are you working on? I can give you an overview of how Vellume Studio can help, or you can go straight to the Inquire page to submit a brief.",
         "That's what I'm here for. Give me a bit more detail about what you're after and I'll guide you from there. Or if you already know what you need, hit the Inquire button to get started."
       ]
+    },
+    {
+      id: 'want_ai',
+      patterns: [/i want .*(ai|automation|chatbot|bot|automate)/, /i need .*(ai|automation|chatbot|bot|automate)/, /looking for .*(ai|automation|chatbot)/, /build .*(ai|chatbot|bot)/, /create .*(ai|chatbot|bot)/, /automate .*(my|our|the)/],
+      replies: [
+        "AI Automation is one of our fastest-growing services. We build custom chatbots, workflow automation, AI-powered tools, and LLM integrations tailored to your business. Email hello@vellumestudio.com.au to discuss what you're looking to automate.",
+        "We'd love to help automate your workflows. From intelligent chatbots to custom AI pipelines and data-driven tools, we build solutions that save time and scale. Reach out via the Inquire page to tell us more.",
+        "You're thinking smart. We design and deploy AI solutions -- chatbots, automated workflows, LLM integrations, and intelligent business tools. Share your goals at hello@vellumestudio.com.au and we'll map out a solution.",
+        "AI is transforming how businesses operate, and we're at the forefront. Whether it's a customer-facing chatbot or internal workflow automation, we'll build it. Start by submitting a brief through our Inquire page."
+      ]
     }
   ];
 
@@ -145,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
       keywords: ['service', 'services', 'offer', 'what do you do', 'capabilities', 'what can you', 'help with', 'what do you offer', 'specialise', 'specialize'],
       weight: 2,
       replies: [
-        "We specialise in four core areas: Branding and Identity, UX/UI Design, Web Development, and 3D / Motion. On top of that, we offer Social Media Management, Digital Marketing, SEO, and Video Production.",
-        "Vellume Studio is a full-service digital agency. We handle branding, UX/UI design, high-performance web development, 3D motion graphics, SEO, digital marketing, social media, and video production.",
-        "Our capabilities span the full digital spectrum. We design, build, brand, and market -- all under one roof. Scroll down to the Services section for a detailed breakdown of each offering.",
-        "We build digital infrastructure for ambitious brands. That includes everything from brand identity systems and web development to 3D renders and ongoing digital marketing. Want to know more about a specific service?"
+        "We specialise in five core areas: Branding and Identity, UX/UI Design, Web Development, 3D / Motion, and AI Automation. On top of that, we offer Social Media Management, Digital Marketing, SEO, and Video Production.",
+        "Vellume Studio is a full-service digital agency. We handle branding, UX/UI design, high-performance web development, 3D motion graphics, AI automation, SEO, digital marketing, social media, and video production.",
+        "Our capabilities span the full digital spectrum -- from brand identity systems and web development to AI-powered automation and 3D renders. Scroll down to the Services section for the full breakdown.",
+        "We build digital infrastructure for ambitious brands. That includes everything from branding and web development to AI automation, 3D motion, and ongoing digital marketing. Want to know more about a specific service?"
       ]
     },
     {
@@ -237,6 +247,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "We offer video production services including concept development, filming, editing, and post-production. From brand films to social media content, we create video that captures attention.",
         "Our video production covers the full pipeline: scripting, shooting, editing, colour grading, and delivery. We create content optimised for web, social, and presentations.",
         "Need video content? We handle everything from short-form social clips to longer brand films. Every video is crafted to align with your brand identity and marketing goals."
+      ]
+    },
+    {
+      id: 'ai_automation',
+      keywords: ['ai', 'artificial intelligence', 'automation', 'automate', 'chatbot', 'bot', 'machine learning', 'llm', 'gpt', 'workflow automation', 'ai tools', 'intelligent', 'smart tools', 'ai agent', 'ai integration'],
+      weight: 3,
+      replies: [
+        "Our AI Automation service covers custom chatbots, workflow automation, LLM integrations, AI-powered business tools, and intelligent data pipelines. We build solutions that save time, reduce costs, and scale with your business.",
+        "We design and deploy AI systems tailored to your needs -- from customer-facing chatbots and virtual assistants to internal workflow automation and data processing pipelines. Every solution is built to integrate seamlessly with your existing tools.",
+        "AI isn't one-size-fits-all. We build custom solutions: intelligent chatbots, automated customer journeys, AI-powered content tools, predictive analytics, and more. Tell us what you want to automate and we'll architect the solution.",
+        "From conversational AI and smart chatbots to full workflow automation and LLM-powered tools, we help businesses leverage AI practically and effectively. Reach out to discuss how AI can transform your operations."
       ]
     },
     {
