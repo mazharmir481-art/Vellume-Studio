@@ -4,16 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject Vee UI into the body
   const veeContainer = document.createElement('div');
   veeContainer.id = 'vee-ai-container';
-  veeContainer.className = 'fixed bottom-6 right-6 z-[99999] font-body flex flex-col items-end pointer-events-none';
+  veeContainer.className = 'fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[99999] font-body flex flex-col items-end pointer-events-none';
   
   veeContainer.innerHTML = `
     <!-- Chat Window (Hidden by default) -->
-    <div id="vee-chat-window" class="w-[340px] h-[450px] bg-[#0A0A0A] border border-[#222222] mb-4 flex flex-col pointer-events-auto transform transition-all duration-500 origin-bottom-right scale-0 opacity-0 shadow-2xl">
+    <div id="vee-chat-window" class="w-[calc(100vw-2rem)] sm:w-[400px] md:w-[450px] h-[75vh] sm:h-[600px] max-h-[800px] bg-[#0A0A0A] border border-[#222222] mb-4 flex flex-col pointer-events-auto transform transition-all duration-500 origin-bottom-right scale-0 opacity-0 shadow-2xl rounded-lg overflow-hidden">
       <!-- Header -->
-      <div class="h-14 border-b border-[#222222] flex items-center justify-between px-4 bg-[#111111]">
+      <div class="h-14 sm:h-16 border-b border-[#222222] flex items-center justify-between px-4 sm:px-6 bg-[#111111]">
         <div class="flex items-center gap-3">
-          <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
-          <span class="font-bold text-[#F5F5F3] text-sm tracking-widest uppercase">Vee</span>
+          <span class="font-bold text-[#F5F5F3] text-sm sm:text-base tracking-widest uppercase">Vee</span>
         </div>
         <button id="vee-close-btn" class="text-[#666666] hover:text-[#F5F5F3] transition-colors cursor-hover">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -24,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       
       <!-- Chat History -->
-      <div id="vee-chat-history" class="flex-grow p-4 overflow-y-auto flex flex-col gap-4 text-sm bg-[#0A0A0A]">
+      <div id="vee-chat-history" class="flex-grow p-4 sm:p-6 overflow-y-auto flex flex-col gap-5 sm:gap-6 text-sm sm:text-base bg-[#0A0A0A]">
         <!-- Welcome Message -->
-        <div class="flex flex-col gap-1 items-start max-w-[85%]">
-          <span class="text-[10px] text-[#666666] uppercase tracking-wider">Vee</span>
+        <div class="flex flex-col gap-1.5 items-start max-w-[90%]">
+          <span class="text-[10px] sm:text-xs text-[#666666] uppercase tracking-wider">Vee</span>
           <div class="bg-[#1A1A1A] text-[#F5F5F3] p-3 rounded-r-lg rounded-bl-lg border border-[#333333]">
             System initialized. I am Vee, the digital assistant for Vellume Studio. How can I assist you with your high-motion infrastructure today?
           </div>
@@ -35,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       
       <!-- Input Area -->
-      <div class="p-3 border-t border-[#222222] bg-[#111111] flex items-center gap-2">
-        <input type="text" id="vee-input-field" placeholder="INITIALIZE QUERY..." class="flex-grow bg-transparent border-none outline-none text-[#F5F5F3] text-xs uppercase placeholder-[#444444] px-2 h-8" autocomplete="off">
-        <button id="vee-send-btn" class="bg-[#F5F5F3] text-[#0A0A0A] w-8 h-8 flex items-center justify-center hover:bg-[#CCCCCC] transition-colors cursor-hover">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="p-3 sm:p-4 border-t border-[#222222] bg-[#111111] flex items-center gap-3">
+        <input type="text" id="vee-input-field" placeholder="INITIALIZE QUERY..." class="flex-grow bg-[#0A0A0A] border border-[#222222] rounded-md outline-none text-[#F5F5F3] text-sm sm:text-base placeholder-[#555555] px-4 h-10 sm:h-12 focus:border-[#444444] transition-colors" autocomplete="off">
+        <button id="vee-send-btn" class="bg-[#F5F5F3] text-[#0A0A0A] rounded-md w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-[#CCCCCC] transition-colors cursor-hover flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
@@ -47,12 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     
     <!-- Floating Action Button -->
-    <button id="vee-fab" class="w-14 h-14 bg-[#0A0A0A] border border-[#333333] rounded-full flex items-center justify-center shadow-lg pointer-events-auto hover:scale-105 hover:bg-[#111111] transition-all duration-300 group cursor-hover relative overflow-hidden">
+    <button id="vee-fab" class="w-14 h-14 sm:w-16 sm:h-16 bg-[#0A0A0A] border-2 border-[#333333] rounded-full flex items-center justify-center shadow-2xl pointer-events-auto hover:scale-105 hover:bg-[#111111] transition-all duration-300 group cursor-hover relative overflow-hidden">
       <!-- Logo Icon -->
-      <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-8 h-8 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
-      
-      <!-- Notification Dot -->
-      <div class="absolute top-0 right-0 w-3 h-3 bg-white rounded-full border-2 border-[#0A0A0A] animate-pulse"></div>
+      <img src="./images/logo_transparent.png" alt="Vellume Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
     </button>
   `;
   
@@ -88,10 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!text.trim()) return;
     
     const wrapper = document.createElement('div');
-    wrapper.className = `flex flex-col gap-1 items-${sender === 'user' ? 'end' : 'start'} max-w-[85%] ${sender === 'user' ? 'self-end' : 'self-start'}`;
+    wrapper.className = `flex flex-col gap-1.5 items-${sender === 'user' ? 'end' : 'start'} max-w-[90%] ${sender === 'user' ? 'self-end' : 'self-start'}`;
     
     const label = document.createElement('span');
-    label.className = 'text-[10px] text-[#666666] uppercase tracking-wider';
+    label.className = 'text-[10px] sm:text-xs text-[#666666] uppercase tracking-wider';
     label.innerText = sender === 'user' ? 'GUEST' : 'Vee';
     
     const bubble = document.createElement('div');
