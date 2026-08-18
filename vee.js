@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex flex-col gap-1.5 items-start max-w-[90%]">
           <span class="text-[10px] sm:text-xs text-[#666666] uppercase tracking-wider ml-1">Vee</span>
           <div class="bg-[#1A1A1A]/90 text-[#F5F5F3] p-4 rounded-2xl rounded-bl-sm border border-white/5 leading-relaxed chat-bubble-anim">
-            System initialized. I am Vee, the digital assistant for Vellume Studio. How can I assist you with your high-motion infrastructure today?
+            Hi there! I'm Vee, your personal assistant here at Vellume Studio. How can I help bring your vision to life today?
           </div>
         </div>
       </div>
