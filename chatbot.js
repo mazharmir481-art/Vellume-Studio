@@ -54,9 +54,12 @@
       </div>
 
       <!-- Launcher Button -->
-      <button id="vel-launcher" class="h-20 px-8 bg-[#F5F5F3] border-2 border-[#0A0A0A] text-[#0A0A0A] rounded-none shadow-[8px_8px_0_0_#0A0A0A] flex items-center justify-center gap-4 font-heading font-black text-2xl md:text-3xl tracking-tighter uppercase hover:bg-emerald-400 hover:shadow-[12px_12px_0_0_#0A0A0A] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 pointer-events-auto">
-        <div class="w-4 h-4 bg-[#0A0A0A] rounded-none animate-pulse"></div>
-        START INQUIRY // VEL
+      <button id="vel-launcher" class="w-20 h-20 bg-[#0A0A0A] border-2 border-[#F5F5F3] text-[#F5F5F3] rounded-full shadow-[6px_6px_0_0_#F5F5F3] flex items-center justify-center hover:bg-emerald-400 hover:text-[#0A0A0A] hover:scale-105 transition-all duration-300 pointer-events-auto group relative">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-ping group-hover:hidden"></div>
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full group-hover:hidden"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
       </button>
     `;
     
