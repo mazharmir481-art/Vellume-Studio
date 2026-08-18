@@ -46,23 +46,15 @@
 <body class="bg-[#F5F5F3] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F5F5F3] antialiased overflow-x-hidden">
 
   <!-- INITIAL LOADER -->
-  <div id="vel-loader" class="fixed inset-0 z-[999999] bg-[#0A0A0A] flex flex-col justify-between p-6 md:p-12 text-[#F5F5F3]">
-    <div class="font-mono-tech text-xs tracking-widest text-[#888888] uppercase">
-      // SYSTEM INITIALIZING
+  <div id="vel-loader" class="fixed inset-0 z-[999999] bg-[#0A0A0A] flex items-center justify-center text-[#F5F5F3]">
+    <!-- Full width progress line -->
+    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#222222]">
+      <div id="vel-loader-progress" class="h-full bg-[#F5F5F3] w-0"></div>
     </div>
     
-    <div class="flex flex-col items-start gap-4">
-      <div id="vel-loader-text" class="font-heading font-black text-6xl md:text-9xl tracking-tighter uppercase leading-none">
-        0%
-      </div>
-      <!-- Progress Bar -->
-      <div class="w-full max-w-sm h-1 bg-[#222222] relative overflow-hidden">
-        <div id="vel-loader-progress" class="absolute inset-y-0 left-0 bg-[#F5F5F3] w-0"></div>
-      </div>
-    </div>
-    
-    <div class="font-mono-tech text-xs tracking-widest text-[#888888] uppercase text-right">
-      VELLUME STUDIO &copy; 2026
+    <!-- Centered Percentage with background to clip the line behind it -->
+    <div id="vel-loader-text" class="relative z-10 font-heading font-black text-5xl md:text-8xl lg:text-9xl tracking-tighter uppercase bg-[#0A0A0A] px-8 text-[#F5F5F3]">
+      0%
     </div>
   </div>
 
