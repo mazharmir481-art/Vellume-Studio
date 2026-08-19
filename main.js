@@ -49,6 +49,63 @@ document.addEventListener('DOMContentLoaded', () => {
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
         }).observe(scrollContainer);
       }
+
+      // Initialize Dynamic Scroll Velocity Distortion Engine
+      initScrollDistortion(locoScroll);
+    }
+  }
+
+  // Dynamic Scroll Velocity Distortion Engine (Skew & Vertical Scale Warp)
+  function initScrollDistortion(locoInstance) {
+    if (typeof gsap === 'undefined') return;
+
+    const sections = document.querySelectorAll('[data-scroll-section]');
+    if (!sections.length) return;
+
+    const skewSetters = [];
+    const scaleSetters = [];
+
+    sections.forEach((sec) => {
+      gsap.set(sec, { transformOrigin: "center center", force3D: true });
+      skewSetters.push(gsap.quickTo(sec, "skewY", { duration: 0.4, ease: "power2.out" }));
+      scaleSetters.push(gsap.quickTo(sec, "scaleY", { duration: 0.4, ease: "power2.out" }));
+    });
+
+    let scrollTimeout = null;
+
+    const applyDistortion = (speed) => {
+      // Clamp skew to max +/- 1.8 deg for clean legibility
+      const targetSkew = Math.max(-1.8, Math.min(1.8, speed * 0.12));
+      // Subtle vertical elastic compression into frame
+      const targetScale = 1 - Math.min(0.018, Math.abs(speed) * 0.001);
+
+      skewSetters.forEach(setSkew => setSkew(targetSkew));
+      scaleSetters.forEach(setScale => setScale(targetScale));
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        skewSetters.forEach(setSkew => setSkew(0));
+        scaleSetters.forEach(setScale => setScale(1));
+      }, 120);
+    };
+
+    if (locoInstance) {
+      locoInstance.on('scroll', (args) => {
+        const speed = args.speed || 0;
+        applyDistortion(speed);
+      });
+    } else {
+      let lastY = window.scrollY;
+      let lastTime = Date.now();
+      window.addEventListener('scroll', () => {
+        const now = Date.now();
+        const dt = Math.max(1, now - lastTime);
+        const dy = window.scrollY - lastY;
+        const speed = (dy / dt) * 16;
+        lastY = window.scrollY;
+        lastTime = now;
+        applyDistortion(speed);
+      }, { passive: true });
     }
   }
 

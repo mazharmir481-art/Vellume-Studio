@@ -271,3 +271,15 @@ html, body {
 .modal-overlay.active .modal-panel {
   transform: translateY(0);
 }
+
+/* Scroll Velocity Distortion Hardware Acceleration */
+[data-scroll-section] {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.scroll-distort-wrapper {
+  transform-origin: center center;
+  will-change: transform;
+}
