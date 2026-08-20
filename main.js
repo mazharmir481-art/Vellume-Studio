@@ -51,33 +51,43 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Initialize Dynamic Scroll Velocity Distortion Engine
-      initScrollDistortion(locoScroll, scrollContainer);
+      initScrollDistortion(locoScroll);
     }
   }
 
   // Dynamic Scroll Velocity Distortion Engine
-  // Applies subtle skewY to the entire scroll container instead of individual
-  // sections, avoiding conflicts with Locomotive Scroll's transform positioning.
-  function initScrollDistortion(locoInstance, container) {
-    if (typeof gsap === 'undefined' || !container) return;
+  // Applies subtle skewY to #scroll-distort-wrapper — a parent div OUTSIDE
+  // Locomotive Scroll's control — so transforms never conflict.
+  function initScrollDistortion(locoInstance) {
+    if (typeof gsap === 'undefined') return;
 
-    // Only run on desktop — touch devices don't benefit from this effect
+    // Only run on desktop
     if (window.innerWidth < 1024 || ('ontouchstart' in window)) return;
 
-    gsap.set(container, { transformOrigin: "center center", force3D: true });
-    const setSkew = gsap.quickTo(container, "skewY", { duration: 0.5, ease: "power3.out" });
+    const wrapper = document.getElementById('scroll-distort-wrapper');
+    if (!wrapper) return;
 
+    gsap.set(wrapper, { transformOrigin: "center center", force3D: true });
+    const setSkew = gsap.quickTo(wrapper, "skewY", { duration: 0.6, ease: "power3.out" });
+
+    let currentSkew = 0;
     let scrollTimeout = null;
 
     const applyDistortion = (speed) => {
-      // Clamp skew to max ±1.5 deg for subtle, clean legibility
-      const targetSkew = Math.max(-1.5, Math.min(1.5, speed * 0.08));
-      setSkew(targetSkew);
+      // Locomotive Scroll speed is typically 0-5 range
+      // Multiply by 0.6 and clamp to ±2.5 deg for visible but tasteful effect
+      const targetSkew = Math.max(-2.5, Math.min(2.5, speed * 0.6));
+      
+      if (Math.abs(targetSkew - currentSkew) > 0.01) {
+        currentSkew = targetSkew;
+        setSkew(targetSkew);
+      }
 
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
+        currentSkew = 0;
         setSkew(0);
-      }, 150);
+      }, 100);
     };
 
     if (locoInstance) {

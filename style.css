@@ -273,13 +273,8 @@ html, body {
 }
 
 /* Scroll Velocity Distortion Hardware Acceleration */
-[data-scroll-container] {
+#scroll-distort-wrapper {
   will-change: transform;
   transform-origin: center center;
   backface-visibility: hidden;
-}
-
-.scroll-distort-wrapper {
-  transform-origin: center center;
-  will-change: transform;
 }
