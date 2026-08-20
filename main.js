@@ -49,52 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
         }).observe(scrollContainer);
       }
-
-      // Initialize Dynamic Scroll Velocity Distortion Engine
-      initScrollDistortion(locoScroll);
-    }
-  }
-
-  // Dynamic Scroll Velocity Distortion Engine
-  // Applies subtle skewY to #scroll-distort-wrapper — a parent div OUTSIDE
-  // Locomotive Scroll's control — so transforms never conflict.
-  function initScrollDistortion(locoInstance) {
-    if (typeof gsap === 'undefined') return;
-
-    // Only run on desktop
-    if (window.innerWidth < 1024 || ('ontouchstart' in window)) return;
-
-    const wrapper = document.getElementById('scroll-distort-wrapper');
-    if (!wrapper) return;
-
-    gsap.set(wrapper, { transformOrigin: "center center", force3D: true });
-    const setSkew = gsap.quickTo(wrapper, "skewY", { duration: 0.6, ease: "power3.out" });
-
-    let currentSkew = 0;
-    let scrollTimeout = null;
-
-    const applyDistortion = (speed) => {
-      // Locomotive Scroll speed is typically 0-5 range
-      // Multiply by 0.6 and clamp to ±2.5 deg for visible but tasteful effect
-      const targetSkew = Math.max(-2.5, Math.min(2.5, speed * 0.6));
-      
-      if (Math.abs(targetSkew - currentSkew) > 0.01) {
-        currentSkew = targetSkew;
-        setSkew(targetSkew);
-      }
-
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        currentSkew = 0;
-        setSkew(0);
-      }, 100);
-    };
-
-    if (locoInstance) {
-      locoInstance.on('scroll', (args) => {
-        const speed = args.speed || 0;
-        applyDistortion(speed);
-      });
     }
   }
 

@@ -272,9 +272,4 @@ html, body {
   transform: translateY(0);
 }
 
-/* Scroll Velocity Distortion Hardware Acceleration */
-#scroll-distort-wrapper {
-  will-change: transform;
-  transform-origin: center center;
-  backface-visibility: hidden;
-}
+
