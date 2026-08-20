@@ -273,9 +273,9 @@ html, body {
 }
 
 /* Scroll Velocity Distortion Hardware Acceleration */
-[data-scroll-section] {
+[data-scroll-container] {
   will-change: transform;
-  transform-style: preserve-3d;
+  transform-origin: center center;
   backface-visibility: hidden;
 }
 

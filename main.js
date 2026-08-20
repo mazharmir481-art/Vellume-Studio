@@ -51,42 +51,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Initialize Dynamic Scroll Velocity Distortion Engine
-      initScrollDistortion(locoScroll);
+      initScrollDistortion(locoScroll, scrollContainer);
     }
   }
 
-  // Dynamic Scroll Velocity Distortion Engine (Skew & Vertical Scale Warp)
-  function initScrollDistortion(locoInstance) {
-    if (typeof gsap === 'undefined') return;
+  // Dynamic Scroll Velocity Distortion Engine
+  // Applies subtle skewY to the entire scroll container instead of individual
+  // sections, avoiding conflicts with Locomotive Scroll's transform positioning.
+  function initScrollDistortion(locoInstance, container) {
+    if (typeof gsap === 'undefined' || !container) return;
 
-    const sections = document.querySelectorAll('[data-scroll-section]');
-    if (!sections.length) return;
+    // Only run on desktop — touch devices don't benefit from this effect
+    if (window.innerWidth < 1024 || ('ontouchstart' in window)) return;
 
-    const skewSetters = [];
-    const scaleSetters = [];
-
-    sections.forEach((sec) => {
-      gsap.set(sec, { transformOrigin: "center center", force3D: true });
-      skewSetters.push(gsap.quickTo(sec, "skewY", { duration: 0.4, ease: "power2.out" }));
-      scaleSetters.push(gsap.quickTo(sec, "scaleY", { duration: 0.4, ease: "power2.out" }));
-    });
+    gsap.set(container, { transformOrigin: "center center", force3D: true });
+    const setSkew = gsap.quickTo(container, "skewY", { duration: 0.5, ease: "power3.out" });
 
     let scrollTimeout = null;
 
     const applyDistortion = (speed) => {
-      // Clamp skew to max +/- 1.8 deg for clean legibility
-      const targetSkew = Math.max(-1.8, Math.min(1.8, speed * 0.12));
-      // Subtle vertical elastic compression into frame
-      const targetScale = 1 - Math.min(0.018, Math.abs(speed) * 0.001);
-
-      skewSetters.forEach(setSkew => setSkew(targetSkew));
-      scaleSetters.forEach(setScale => setScale(targetScale));
+      // Clamp skew to max ±1.5 deg for subtle, clean legibility
+      const targetSkew = Math.max(-1.5, Math.min(1.5, speed * 0.08));
+      setSkew(targetSkew);
 
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
-        skewSetters.forEach(setSkew => setSkew(0));
-        scaleSetters.forEach(setScale => setScale(1));
-      }, 120);
+        setSkew(0);
+      }, 150);
     };
 
     if (locoInstance) {
@@ -94,18 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const speed = args.speed || 0;
         applyDistortion(speed);
       });
-    } else {
-      let lastY = window.scrollY;
-      let lastTime = Date.now();
-      window.addEventListener('scroll', () => {
-        const now = Date.now();
-        const dt = Math.max(1, now - lastTime);
-        const dy = window.scrollY - lastY;
-        const speed = (dy / dt) * 16;
-        lastY = window.scrollY;
-        lastTime = now;
-        applyDistortion(speed);
-      }, { passive: true });
     }
   }
 
